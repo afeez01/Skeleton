@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/AdminSystem/{157421EE-9D45-44EB-9290-6574686CB7FC}
