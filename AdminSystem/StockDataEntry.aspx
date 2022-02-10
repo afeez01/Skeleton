@@ -7,6 +7,7 @@
     <title></title>
 </head>
 <body>
+    This my website for stock management
     <form id="form1" runat="server">
         <div>
         </div>
