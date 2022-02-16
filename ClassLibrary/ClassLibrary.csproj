@@ -41,8 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
- AfeezBranch
-    <Compile Include="clsCustomer.cs" />
 =======
     <Compile Include="clsStock.cs" />
  master
