@@ -7,10 +7,36 @@
     <title></title>
 </head>
 <body>
-    This is the order entry page
     <form id="form1" runat="server">
-        <div>
-        </div>
+        <asp:Label ID="lblOrderId" runat="server" Text="Order ID" width="107px"></asp:Label>
+        <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID" width="107px"></asp:Label>
+            <asp:TextBox ID="txtCustomerId" runat="server"></asp:TextBox>
+        </p>
+        <asp:Label ID="lblShippingAddress" runat="server" Text="Shipping Address" width="107px"></asp:Label>
+        <asp:TextBox ID="txtShippingAddress" runat="server"></asp:TextBox>
+        <p>
+            <asp:Label ID="lblOrderDate" runat="server" Text="Order Date" width="107px"></asp:Label>
+            <asp:TextBox ID="txtOrderDate" runat="server"></asp:TextBox>
+        </p>
+        <asp:Label ID="lblOrderEmail" runat="server" Text="Order Email" width="107px"></asp:Label>
+        <asp:TextBox ID="txtOrderEmail" runat="server"></asp:TextBox>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:CheckBox ID="chkOrderCompleted" runat="server" Text="Order Completed" OnCheckedChanged="chkActive_CheckedChanged" />
+        </p>
+        <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+        </p>
+        <p>
+&nbsp;&nbsp;
+            <asp:Button ID="btnOK" runat="server" Height="24px" OnClick="btnOK_Click" style="margin-right: 3px" Text="OK" Width="38px" />
+            <asp:Button ID="btnCancel" runat="server" Height="24px" Text="Cancel" Width="50px" />
+        </p>
+        <p>
+            &nbsp; &nbsp;</p>
     </form>
 </body>
 </html>
