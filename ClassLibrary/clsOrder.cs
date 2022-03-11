@@ -75,9 +75,10 @@ namespace ClassLibrary
                 mOrderDate = value; 
             }
             }
-        //OrderDate private member variable
+
+        //OrderEmail private member variable
         private string mOrderEmail;
-        //OrderDate public property
+        //OrderEmail public property
         public string OrderEmail 
         {
             get
@@ -93,8 +94,9 @@ namespace ClassLibrary
                 ;
             }
         }
-        //
+        //OrderCompleted private member variable
         private bool mOrderCompleted;
+        //OrderCompleted public property
         public bool OrderCompleted 
         { 
             get
@@ -110,16 +112,35 @@ namespace ClassLibrary
             }
         public bool Find(int OrderId)
         {
-            //set the private data members to the test data value
-            mOrderId = 21;
-            mCustomerId = 24;
-            mShippingAddress = "Test Shipping address";
-            mOrderDate = Convert.ToDateTime("17/08/2020");
-            mOrderEmail = "Test Order email";
-            mOrderCompleted = true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the order id to search for
+            DB.AddParameter("@OrderId", OrderId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            //if one record is found 
+            if (DB.Count == 1 )
+            {
+                //copy the data from the database to the private data members
+            mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]);
+            mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+            mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+            mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+            mOrderEmail = Convert.ToString(DB.DataTable.Rows[0]["OrderEmail"]);
+            mOrderCompleted = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderCompleted"]);
 
-            //always return true
+            //return that everything worked OK 
             return true;
+        }
+            //if no record was found
+            else
+            {
+                //return false indicating a problem
+            return false;
+            }
         }
     }
 }
+
+
+

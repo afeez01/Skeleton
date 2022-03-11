@@ -13,7 +13,7 @@ namespace Testing4
             //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             
-            //teste to see that it exists
+            //test to see that it exists
             Assert.IsNotNull(AnOrder);
         }
        
@@ -143,11 +143,11 @@ namespace Testing4
             //boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1 ;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //check the address no
-            if (AnOrder.OrderId != 21)
+            if (AnOrder.OrderId != 1)
             {
                 OK = false;
             }
@@ -166,13 +166,13 @@ namespace Testing4
             Boolean OK = true;
 
            //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
         
            //invoke the method
            Found = AnOrder.Find(OrderId);
           
            //check the property
-           if (AnOrder.CustomerId != 24)
+           if (AnOrder.CustomerId != 232335)
              {
              OK = false;
              }
@@ -195,13 +195,13 @@ namespace Testing4
             Boolean OK = true;
 
              //create some test data to use with the method
-             Int32 OrderId = 21;
+             Int32 OrderId = 1;
 
             //invoke the method
              Found = AnOrder.Find(OrderId);
            
             //check the property
-            if (AnOrder.ShippingAddress != "Test Shipping address")
+            if (AnOrder.ShippingAddress != "Madeira")
             {
                 OK = false;
             }
@@ -230,7 +230,7 @@ namespace Testing4
             Found = AnOrder.Find(OrderId);
 
             //check the property
-            if (AnOrder.OrderDate != Convert.ToDateTime("17/08/2020"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("2022-04-23"))
             {
                 OK = false;
             }
@@ -254,13 +254,13 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
 
             //check the property
-            if (AnOrder.OrderEmail != "Test Order email")
+            if (AnOrder.OrderEmail != "andreiamartins@gmail.com")
             {
                 OK = false;
             }
@@ -282,7 +282,7 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);
