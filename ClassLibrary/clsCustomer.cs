@@ -44,19 +44,19 @@ namespace ClassLibrary
 
 
         //private date added data member
-        private DateTime mDOB;
+        private DateTime mDateOfBirth;
         //public property for date of birth
-        public DateTime DOB
+        public DateTime DateOfBirth
         {
             get
             {
                 //return the private data
-                return mDOB;
+                return mDateOfBirth;
             }
             set
             {
                 //set the private data
-                mDOB = value;
+                mDateOfBirth = value;
             }
         }
 
@@ -138,7 +138,7 @@ namespace ClassLibrary
                 mEmailAddress = Convert.ToString(DB.DataTable.Rows[0]["EmailAddress"]);
                 mCustomerDetails = Convert.ToString(DB.DataTable.Rows[0]["CustomerDetails"]);
                 mAccountBalance = Convert.ToDecimal(DB.DataTable.Rows[0]["AccountBalance"]);
-                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
+                mDateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[0]["DateOfBirth"]);
                 mOrderProcess = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderProcess"]);
                 //return that everything worked OK
                 return true;
