@@ -32,8 +32,8 @@ namespace Testing2
         {
             clsCustomer AnCustomer = new clsCustomer();
             DateTime TestData = DateTime.Now.Date;
-            AnCustomer.DOB = TestData;
-            Assert.AreEqual(AnCustomer.DOB, TestData);
+            AnCustomer.DateOfBirth = TestData;
+            Assert.AreEqual(AnCustomer.DateOfBirth, TestData);
         }
 
         [TestMethod]
@@ -85,7 +85,7 @@ namespace Testing2
             //Boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //test to see if result is true
@@ -103,11 +103,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.CustomerID != 21)
+            if (AnCustomer.CustomerID != 1)
             {
                 OK = false;
             }
@@ -125,11 +125,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the property
-            if (AnCustomer.DOB != Convert.ToDateTime("16/09/2016"))
+            if (AnCustomer.DateOfBirth != Convert.ToDateTime("16/09/1992"))
             {
                 OK = false;
             }
@@ -147,11 +147,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.EmailAddress != "testemail@customer.com")
+            if (AnCustomer.EmailAddress != "bobmarley@gmail.com")
             {
                 OK = false;
             }
@@ -169,11 +169,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.CustomerDetails != "Test Name")
+            if (AnCustomer.CustomerDetails != "Bob Marley")
             {
                 OK = false;
             }
@@ -191,11 +191,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.AccountBalance != 41)
+            if (AnCustomer.AccountBalance != 50)
             {
                 OK = false;
             }
@@ -213,7 +213,7 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 21;
+            Int32 CustomerID = 1;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id

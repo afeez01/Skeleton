@@ -13,8 +13,8 @@
         <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID"></asp:Label>
         <asp:TextBox ID="txtCustomerID" runat="server" style="margin-left: 27px"></asp:TextBox>
         <p>
-            <asp:Label ID="lblDOB" runat="server" Text="Date Of Birth"></asp:Label>
-            <asp:TextBox ID="txtDOB" runat="server" style="margin-left: 27px"></asp:TextBox>
+            <asp:Label ID="lblDateOfBirth" runat="server" Text="Date Of Birth"></asp:Label>
+            <asp:TextBox ID="txtDateOfBirth" runat="server" style="margin-left: 27px"></asp:TextBox>
         </p>
         <asp:Label ID="lblEmailAddress" runat="server" Text="Email Address"></asp:Label>
         <asp:TextBox ID="txtEmailAddress" runat="server" style="margin-left: 25px"></asp:TextBox>

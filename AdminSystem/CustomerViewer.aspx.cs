@@ -16,7 +16,7 @@ public partial class _1Viewer : System.Web.UI.Page
         AnCustomer = (clsCustomer)Session["AnCustomer"];
         //display email address on the page
         Response.Write("ID =" + AnCustomer.CustomerID + "<br />");
-        Response.Write("Date Of Birth =" + AnCustomer.DOB + "<br />");
+        Response.Write("Date Of Birth =" + AnCustomer.DateOfBirth + "<br />");
         Response.Write("Email =" + AnCustomer.EmailAddress + "<br />");
         Response.Write("Details =" + AnCustomer.CustomerDetails + "<br />");
         Response.Write("Balance =" + AnCustomer.AccountBalance + "<br />");
