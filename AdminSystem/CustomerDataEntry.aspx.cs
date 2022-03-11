@@ -33,7 +33,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    
 
 
+
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsCustomer AnCustomer = new clsCustomer();
+
+        Int32 CustomerID;
+
+        Boolean Found = false;
+        CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        Found = AnCustomer.Find(CustomerID);
+        if (Found == true)
+        {
+            txtDOB.Text = AnCustomer.DOB.ToString();
+            txtEmailAddress.Text = AnCustomer.EmailAddress;
+            txtCustomerDetails.Text = AnCustomer.CustomerDetails;
+            txtAccountBalance.Text = AnCustomer.AccountBalance.ToString();
+
+        }
+    }
 }

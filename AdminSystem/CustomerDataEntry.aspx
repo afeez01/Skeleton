@@ -31,6 +31,7 @@
         <p>
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" style="margin-left: 16px" Text="Cancel" Width="83px" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="margin-left: 217px" Text="Find" Width="72px" />
         </p>
     </form>
 </body>
