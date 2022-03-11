@@ -125,7 +125,7 @@ namespace Testing3
             Boolean Found = false;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
@@ -147,7 +147,7 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
@@ -174,12 +174,12 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.ToolName != "Test Tool Name")
+            if (AnStock.ToolName != "Bosch HSS-R Drill Bit")
             {
                 OK = false;
             }
@@ -202,12 +202,12 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.QuantityInStock != 100)
+            if (AnStock.QuantityInStock != 7)
             {
                 OK = false;
             }
@@ -230,12 +230,12 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.DateAdded!= Convert.ToDateTime("15/05/2017"))
+            if (AnStock.DateAdded!= Convert.ToDateTime("07/02/2022"))
             {
                 OK = false;
             }
@@ -257,12 +257,12 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.UnitPrice != 100.99m)
+            if (AnStock.UnitPrice != 1.9500m)
             {
                 OK = false;
             }
@@ -284,12 +284,12 @@ namespace Testing3
             Boolean OK = true;
 
             // create some test data to use with the method
-            Int32 ToolID = 21;
+            Int32 ToolID = 1;
 
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.OnSale != true)
+            if (AnStock.OnSale != false)
             {
                 OK = false;
             }

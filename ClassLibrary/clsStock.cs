@@ -99,16 +99,46 @@ namespace ClassLibrary
 
         public bool Find(int ToolID)
         {
-            // set the private data members to the test data value
+            // create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            // add the parameter for the tool id to search for
+            DB.AddParameter("@ToolID", ToolID);
+
+            // execute the stored procedure
+            DB.Execute("sproc_tblTool_FilterByToolID");
+
+            // if one record is found (there should be either one or zero!)
+            if(DB.Count==1)
+            {
+                // copy the data from the database to the private data members
+                mToolID = Convert.ToInt32(DB.DataTable.Rows[0]["ToolID"]);
+                mToolName = Convert.ToString(DB.DataTable.Rows[0]["ToolName"]);
+                mQuantityInStock = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityInStock"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mUnitPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["UnitPrice"]);
+                mOnSale = Convert.ToBoolean(DB.DataTable.Rows[0]["OnSale"]);
+
+                // return that everything worked ok
+                return true;
+
+            }
+            else // if no record was found
+            {
+                // return false indicating a problem
+                return false;
+            }
+
+           /* // set the private data members to the test data value
             mToolID = 21;
             mToolName = "Test Tool Name";
             mQuantityInStock = 100;
             mDateAdded = Convert.ToDateTime("15/05/2017");
             mUnitPrice = 100.99m;
-            mOnSale = true;
+            mOnSale = true;*/
 
 
-            return true;
+            
         }
     }
 }
