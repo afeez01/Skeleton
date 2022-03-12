@@ -124,7 +124,7 @@ namespace Testing4
             //boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -224,7 +224,7 @@ namespace Testing4
             Boolean OK = true;
 
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 1;
 
             //invoke the method
             Found = AnOrder.Find(OrderId);

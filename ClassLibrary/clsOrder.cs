@@ -122,7 +122,7 @@ namespace ClassLibrary
             if (DB.Count == 1 )
             {
                 //copy the data from the database to the private data members
-            mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]);
+            mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
             mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
             mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
             mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
