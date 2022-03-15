@@ -140,5 +140,55 @@ namespace ClassLibrary
 
             
         }
+
+        public string Valid(string toolName, string quantityInStock, string dateAdded, string unitPrice)
+        {
+            // string variable to store any error
+            String Error = "";
+            //create a temporary variable to store date values
+            DateTime DateTemp;
+
+            //***********************************************************************
+            // if the toolName is blank
+            if (toolName.Length == 0)
+            {
+                // record the error
+                Error = Error + "The tool name may not be blank : ";
+            }
+
+            // if the tool name is greater than 50 chars
+            if (toolName.Length > 50)
+            {
+                // record the error
+                Error = Error + "The tool name must be less than 50 characters : ";
+            }
+
+            //***********************************************************************
+            try
+            {
+                //copy the dateAdded value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dateAdded);
+                if (DateTemp.Date < DateTime.Now.Date.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp.Date > DateTime.Now.Date.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+
+
+            // return any error messages
+            return Error;
+        }
     }
 }
