@@ -7,6 +7,14 @@ namespace Testing3
     [TestClass]
     public class tstStock
     {
+        // good test data
+        // create some test data to pass to the method
+        String ToolName = "Bosch HSS-R Drill Bit";
+        String QuantityInStock = "7";
+        String DateAdded = DateTime.Now.ToString();
+        String UnitPrice = "1.9500";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -298,6 +306,203 @@ namespace Testing3
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+               
+        }
+
+        [TestMethod]
+        public void ToolNameMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should fail
+            String ToolName = "";
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMin()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should pass
+            String ToolName = "a";
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMinPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should pass
+            String ToolName = "aa"; 
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMaxLessOne()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should pass
+            String ToolName = ""; 
+            ToolName = ToolName.PadRight(49, 'a');
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMax()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should pass            
+            String ToolName = "".PadRight(50, 'a');
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMaxPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should fail
+            String ToolName = "";
+            ToolName = ToolName.PadRight(51, 'a');
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameMid()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should pass
+            String ToolName = "";
+            ToolName = ToolName.PadRight(25, 'a');
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ToolNameExtremeMax()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // this should fail
+            String ToolName = "";
+            ToolName = ToolName.PadRight(500, 'a');
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //*********************** DateAdded ***************************
+        [TestMethod]
+        public void DateAddedExtremeMin()
+        {
+            // create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            // string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the test date data
+            DateTime TestDate = DateTime.Now.Date;
+            // change the date to wharever the date is less than 1000
+            TestDate = TestDate.AddYears(-1000);
+
+            // this should fail
+            String DateAdded = TestDate.ToString();           
+
+            // invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
 
 
 
