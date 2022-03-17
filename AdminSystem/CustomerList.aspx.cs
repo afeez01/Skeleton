@@ -29,5 +29,32 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataBind();
     }
 
-   
+
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["CustomerID"] = -1;
+        Response.Redirect("CustomerDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        //var to store primary key
+        Int32 CustomerID;
+        //IF A RECORD HAS BEEN SELECTED FROM THE LIST
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            //get primary key value to edit
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            //STORE DATA
+            Session["CustomerID"] = CustomerID;
+            //redirect
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
+
+    }
 }
