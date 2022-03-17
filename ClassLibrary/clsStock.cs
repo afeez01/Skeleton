@@ -186,6 +186,38 @@ namespace ClassLibrary
                 Error = Error + "The date was not a valid date : ";
             }
 
+            //***********************************************************************
+            try
+            {
+                int result = Int32.Parse(quantityInStock);
+                if (result < 0)
+                {
+                    // record the error
+                    Error = Error + "The quantityInStock cannot be less than 0";
+                }
+            }
+            catch (FormatException)
+            {
+                // record the error 
+                Error = Error + "The quantityInStock has invalid format!!";
+            }
+
+            //***********************************************************************
+            try
+            {
+                decimal result = Decimal.Parse(unitPrice);
+                if (result < 0)
+                {
+                    // record the error
+                    Error = Error + "The UnitPrice cannot be less than zero";
+                }
+            }
+            catch
+            {
+                // record the error
+                Error = Error + "The UnitPrice has invalid format!!";
+            }
+
 
             // return any error messages
             return Error;
