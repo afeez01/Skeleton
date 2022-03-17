@@ -7,6 +7,14 @@ namespace Testing4
     [TestClass]
     public class tstOrder
     {
+        //good test data
+        //create some test data to pass to the method
+        
+        string CustomerId  =  "213121";
+        string ShippingAddress  = "Portugal";
+        string OrderEmail = "francisco.neves@gmail.com";
+        string OrderDate = DateTime.Now.Date.ToString();
+       
         [TestMethod]
         public void InstanceOK()
         {
@@ -297,5 +305,17 @@ namespace Testing4
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method
+            Error = AnOrder.Valid(CustomerId,ShippingAddress,OrderDate,OrderEmail);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
     }
-    }
+}

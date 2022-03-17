@@ -139,6 +139,11 @@ namespace ClassLibrary
             return false;
             }
         }
+
+        public string Valid(string customerId, string shippingAddress, string orderDate, string orderEmail)
+        {
+            return "";
+        }
     }
 }
 
