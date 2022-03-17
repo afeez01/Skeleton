@@ -8,9 +8,33 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 CustomerID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        //get number of address to be processed
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            if (CustomerID != -1)
+            {
+                DisplayCustomers();
+            }
+        }
+
+    }
+    void DisplayCustomers()
+    {
+        clsCustomerCollection CustomerBook = new clsCustomerCollection();
+        //find record to update
+        CustomerBook.ThisCustomer.Find(CustomerID);
+        //display data for this record
+        txtCustomerID.Text = CustomerBook.ThisCustomer.CustomerID.ToString();
+        txtDateOfBirth.Text = CustomerBook.ThisCustomer.DateOfBirth.ToString();
+        txtEmailAddress.Text = CustomerBook.ThisCustomer.EmailAddress;
+        txtCustomerDetails.Text = CustomerBook.ThisCustomer.CustomerDetails;
+        txtAccountBalance.Text = CustomerBook.ThisCustomer.AccountBalance.ToString();
+        chkOrderProcess.Checked = CustomerBook.ThisCustomer.OrderProcess;
 
     }
 
@@ -28,19 +52,48 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnCustomer.Valid(DateOfBirth, EmailAddress, CustomerDetails, AccountBalance);
         if (Error == "")
         {
+            //capture details
+            AnCustomer.CustomerID = CustomerID;
+            AnCustomer.DateOfBirth = Convert.ToDateTime(DateOfBirth);
+            AnCustomer.EmailAddress = EmailAddress;
+            AnCustomer.CustomerDetails = CustomerDetails;
+            AnCustomer.AccountBalance = Convert.ToDecimal(AccountBalance);
+            AnCustomer.OrderProcess = chkOrderProcess.Checked;
+            //new instance
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            if (CustomerID == -1)
+            {
+                CustomerList.ThisCustomer = AnCustomer;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(CustomerID);
+                CustomerList.ThisCustomer = AnCustomer;
+                CustomerList.Update();
+
+            }
+            Response.Redirect("CustomerList.aspx");
+
+        
 
 
-            //capture email address
+
+            //capture deatils
             AnCustomer.CustomerID = Convert.ToInt16(txtCustomerID.Text);
             AnCustomer.DateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
             AnCustomer.EmailAddress = txtEmailAddress.Text;
             AnCustomer.CustomerDetails = txtCustomerDetails.Text;
             AnCustomer.AccountBalance = Convert.ToDecimal(txtAccountBalance.Text);
             AnCustomer.OrderProcess = Convert.ToBoolean(chkOrderProcess.Checked);
-            //store the date of birth in the session object
-            Session["AnCustomer"] = AnCustomer;
+            //create new instance of customer collection
+            //set this customer property
+            CustomerList.ThisCustomer = AnCustomer;
+            //add new record
+            CustomerList.Add();
             //navigate to viewer page
-            Response.Redirect("CustomerViewer.aspx");
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {
