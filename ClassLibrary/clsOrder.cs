@@ -144,23 +144,80 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            
+
+            //create a temporary varianle to store date values
+            DateTime DateTemp;
+
             //if the ShippingAddress is blank
             if (shippingAddress.Length == 0)
             {
                 // record the error
                 Error = Error + "The shipping address may not be blank : ";
             }
+            //if the shippingAddress is greater than 50
             if(shippingAddress.Length > 50)
             {
                 // record the error
                 Error = Error + "The shipping address must be less than 50 characters : ";
             }
+           
+            try
+            {
+            
+            //copy the orderDate value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(orderDate);
+            if(DateTemp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past :";
+            }
+            //check to see if the date is greater than todays date
+            if(DateTemp > DateTime.Now.Date)
+            {
+                //record error
+                Error = Error + "The date cannot be in the future :";
+            }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The date was not a valid date : ";
+            }
+            //if the orderEmail is blank
+            if (orderEmail.Length == 0)
+            {
+                // record the error
+                Error = Error + "The order email may not be blank : ";
+            }
+            //if the orderEmail is greater than 50
+            if (orderEmail.Length > 50)
+            {
+                // record the error
+                Error = Error + "The order email must be less than 50 characters : ";
+            }
+           
+            try
+            {
+                int result = Int32.Parse(customerId);
+                if (result < 0)
+                {
+                    // record the error
+                    Error = Error + "The customerId cannot be less than zero : ";
+                }
+            }
+            catch (FormatException)
+            {
+                // record the error 
+                Error = Error + "The customerId has invalid format! : ";
+            }
+
             //return any error messages
             return Error;
         }
 }
-    }
+    
+}
+
 
 
 
