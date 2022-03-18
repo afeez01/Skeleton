@@ -142,10 +142,26 @@ namespace ClassLibrary
 
         public string Valid(string customerId, string shippingAddress, string orderDate, string orderEmail)
         {
-            return "";
+            //create a string variable to store the error
+            String Error = "";
+            
+            //if the ShippingAddress is blank
+            if (shippingAddress.Length == 0)
+            {
+                // record the error
+                Error = Error + "The shipping address may not be blank : ";
+            }
+            if(shippingAddress.Length > 50)
+            {
+                // record the error
+                Error = Error + "The shipping address must be less than 50 characters : ";
+            }
+            //return any error messages
+            return Error;
         }
-    }
 }
+    }
+
 
 
 
