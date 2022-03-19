@@ -25,7 +25,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source to list of customers in the collection 
         lstCustomerList.DataSource = Customers.CustomerList;
         lstCustomerList.DataValueField = "CustomerID";
-        lstCustomerList.DataTextField = "Customer Details";
+        lstCustomerList.DataTextField = "CustomerDetails";
         lstCustomerList.DataBind();
     }
 

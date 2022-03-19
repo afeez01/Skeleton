@@ -10,20 +10,7 @@ namespace ClassLibrary
         //private data memeber ThisCustomer
         clsCustomer mThisCustomer = new clsCustomer();
         //plubic property for ThisAddress
-        public clsCustomer ThisCustomer
-        {
-            get
-            {
-                //return private data
-                return mThisCustomer;
-            }
-            set
-            {
-                //set private data
-                mThisCustomer = value;
 
-            }
-        }
         //plubic property for customer list
         public List<clsCustomer> CustomerList
         {
@@ -39,6 +26,47 @@ namespace ClassLibrary
 
             }
         }
+
+        public clsCustomerCollection ()
+        {
+            Int32 Index = 0;
+
+            Int32 RecordCount = 0;
+
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.Execute("sproc_tblCustomer_SelectAll");
+
+            RecordCount = DB.Count;
+            while(Index < RecordCount)
+            {
+                clsCustomer AnCustomer = new clsCustomer();
+                AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnCustomer.CustomerDetails = Convert.ToString(DB.DataTable.Rows[Index]["CustomerDetails"]);
+                AnCustomer.EmailAddress = Convert.ToString(DB.DataTable.Rows[Index]["EmailAddress"]);
+                AnCustomer.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                AnCustomer.AccountBalance = Convert.ToDecimal(DB.DataTable.Rows[Index]["AccountBalance"]);
+                AnCustomer.OrderProcess = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderProcess"]);
+                mCustomerList.Add(AnCustomer);
+                Index++;
+            }
+            
+        }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                //return private data
+                return mThisCustomer;
+            }
+            set
+            {
+                //set private data
+                mThisCustomer = value;
+
+            }
+        }
+        
         public int Count
             { 
                 get
