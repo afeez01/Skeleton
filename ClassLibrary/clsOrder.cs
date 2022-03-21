@@ -202,13 +202,13 @@ namespace ClassLibrary
                 if (result < 0)
                 {
                     // record the error
-                    Error = Error + "The customerId cannot be less than zero : ";
+                    Error = Error + "The customerID cannot be less than zero : ";
                 }
             }
             catch (FormatException)
             {
                 // record the error 
-                Error = Error + "The customerId has invalid format! : ";
+                Error = Error + "The customerID has invalid format! : ";
             }
 
             //return any error messages

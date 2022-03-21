@@ -18,30 +18,56 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
 
-        //capture the order
-        AnOrder.OrderId = Convert.ToInt32(txtOrderId.Text);
-        AnOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        AnOrder.ShippingAddress = txtShippingAddress.Text;
-        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        AnOrder.OrderEmail = txtOrderEmail.Text;
-        AnOrder.OrderCompleted = chkOrderCompleted.Checked;
+        //capture the customer id
+        string CustomerId = txtCustomerId.Text;
 
-        //store the order in the session object
-        Session["AnOrder"] = AnOrder;
+        //capture the shipping address
+        string ShippingAddress = txtShippingAddress.Text;
 
-        //navigate to the viewer page
-        Response.Redirect("OrdersViewer.aspx");
-       
-    
+        //capture the order date
+        string OrderDate = txtOrderDate.Text;
+
+        //capture the order email
+        string OrderEmail = txtOrderEmail.Text;
+
+        //variable to store any error messages
+        string Error = "";
+      
+        //validate the data
+        Error = AnOrder.Valid(CustomerId, ShippingAddress, OrderDate, OrderEmail);
+        if (Error == "")
+        {
+
+            //capture the customer id
+            AnOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
+
+            //capture the shipping address
+            AnOrder.ShippingAddress = ShippingAddress;
+
+            //capture the order date
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+
+            //capture the order email
+            AnOrder.OrderEmail = OrderEmail;
+
+
+
+            //store the order in the session object
+            Session["AnOrder"] = AnOrder;
+
+            //navigate to the viewer page
+            Response.Redirect("OrdersViewer.aspx");
+
+
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
 
-
-
-    protected void chkActive_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
@@ -69,4 +95,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
 }
 
 
+
+    protected void chkOrderCompleted_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
 }
