@@ -37,6 +37,8 @@ namespace ClassLibrary
 
             DB.Execute("sproc_tblCustomer_SelectAll");
 
+            PopulateArray(DB);
+
             RecordCount = DB.Count;
             while(Index < RecordCount)
             {
@@ -110,6 +112,43 @@ namespace ClassLibrary
             DB.Execute("sproc_tblCustomer_Update");
         }
 
-        
-    }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByCustomerDetails(string CustomerDetails)
+        {
+            //filter
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerDetails", CustomerDetails);
+            DB.Execute("sproc_tblCustomer_FilteredByCustomerDetails");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mCustomerList = new List<clsCustomer>();
+            while (Index < RecordCount)
+            {
+                clsCustomer AnCustomer = new clsCustomer();
+                AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnCustomer.DateOfBirth = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateOfBirth"]);
+                AnCustomer.EmailAddress = Convert.ToString(DB.DataTable.Rows[Index]["EmailAddress"]);
+                AnCustomer.CustomerDetails = Convert.ToString(DB.DataTable.Rows[Index]["CustomerDetails"]);
+                AnCustomer.AccountBalance = Convert.ToDecimal(DB.DataTable.Rows[Index]["AccountBalance"]);
+                AnCustomer.OrderProcess = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderProcess"]);
+                //add record to private dat customers
+                mCustomerList.Add(AnCustomer);
+                //point at next record
+                Index++;
+            }
+
+        }
+        }
 }

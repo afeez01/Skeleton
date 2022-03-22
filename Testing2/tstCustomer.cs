@@ -10,10 +10,10 @@ namespace Testing2
 
         //test data
 
-        String DateOfBirth = "1992/09/16";
-        String EmailAddress= "bobmarley@gmail.com";
-        String CustomerDetails = "Bob Marley";
-        String AccountBalance = "50";
+        String DateOfBirth = "05/05/1950";
+        String EmailAddress= "willwonka@gmail.com";
+        String CustomerDetails = "Willy Wonka";
+        String AccountBalance = "90";
 
 
 
@@ -69,7 +69,7 @@ namespace Testing2
 
         {
             clsCustomer AnCustomer = new clsCustomer();
-            string TestData = "bob marley";
+            string TestData = "Willy Wonka";
             AnCustomer.CustomerDetails = TestData;
             Assert.AreEqual(AnCustomer.CustomerDetails, TestData);
         }
@@ -103,7 +103,7 @@ namespace Testing2
             //Boolean variable to store the result of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //test to see if result is true
@@ -121,7 +121,7 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
@@ -143,11 +143,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the property
-            if (AnCustomer.DateOfBirth != Convert.ToDateTime("16/09/1992"))
+            if (AnCustomer.DateOfBirth != Convert.ToDateTime("05/05/1950"))
             {
                 OK = false;
             }
@@ -165,11 +165,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.EmailAddress != "bobmarley@gmail.com")
+            if (AnCustomer.EmailAddress != "willywonka@gmail.com")
             {
                 OK = false;
             }
@@ -187,11 +187,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.CustomerDetails != "Bob Marley")
+            if (AnCustomer.CustomerDetails != "Willy Wonka")
             {
                 OK = false;
             }
@@ -209,11 +209,11 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id
-            if (AnCustomer.AccountBalance != 50)
+            if (AnCustomer.AccountBalance != 90)
             {
                 OK = false;
             }
@@ -231,7 +231,7 @@ namespace Testing2
             //Boolean variable to record if data is valid
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 CustomerID = 74;
+            Int32 CustomerID = 115;
             //invoke the method
             Found = AnCustomer.Find(CustomerID);
             //check the customer id

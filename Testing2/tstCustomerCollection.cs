@@ -8,6 +8,8 @@ namespace Testing2
     [TestClass]
     public class tstCustomerCollection
     {
+        public bool Found { get; private set; }
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -134,6 +136,56 @@ namespace Testing2
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            //create instance of class collection
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create item to test Data 
+            clsCustomer TestItem = new clsCustomer();
+            //var to store primary key
+            Int32 PrimaryKey = 0;
+            //set properties 
+            TestItem.CustomerID = 2;
+            TestItem.CustomerDetails = "Rachel Silver";
+            TestItem.DateOfBirth = Convert.ToDateTime("17/04/1997");
+            TestItem.EmailAddress = "rachelsilver@gmail.com";
+            TestItem.AccountBalance = 150;
+            TestItem.OrderProcess = true;
+            //set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+            //ADD THE record
+            PrimaryKey = AllCustomers.Add();
+            //set primary key of test data
+            TestItem.CustomerID = PrimaryKey;
+            //find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            //update the record
+            AllCustomers.Delete();
+            //test to see that the two values are the same
+            Assert.IsFalse(Found);
+        }
+
+        public void ReportByCustomerDetailsMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+
+            FilteredCustomers.ReportByCustomerDetails("");
+
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByCustomerDetailsNoneFound()
+        {
+            //create instance of class collection
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByCustomerDetails("xxx xxx");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
 
     }
 
