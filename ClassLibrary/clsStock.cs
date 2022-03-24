@@ -193,13 +193,13 @@ namespace ClassLibrary
                 if (result < 0)
                 {
                     // record the error
-                    Error = Error + "The quantityInStock cannot be less than zero : ";
+                    Error = Error + "The quantity in stock cannot be less than zero : ";
                 }
             }
             catch (FormatException)
             {
                 // record the error 
-                Error = Error + "The quantityInStock has invalid format! : ";
+                Error = Error + "The quantity in stock has invalid format! : ";
             }
 
             //***********************************************************************
@@ -209,13 +209,13 @@ namespace ClassLibrary
                 if (result < 0)
                 {
                     // record the error
-                    Error = Error + "The UnitPrice cannot be less than zero : ";
+                    Error = Error + "The unit price cannot be less than zero : ";
                 }
             }
             catch
             {
                 // record the error
-                Error = Error + "The UnitPrice has invalid format! : ";
+                Error = Error + "The unit price has invalid format! : ";
             }
 
 
