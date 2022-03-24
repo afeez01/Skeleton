@@ -12,11 +12,11 @@ namespace Testing5
         //Test data
 
         string SupplierId = "0500";
-        string Name = "Tool Factory"
+        string Name = "Tool Factory";
         string Address = "Tool Factory, Industry ST";
         Boolean GlobalSupplier  = true;
-        string DateAdded = "21/02/2020"
-        string Feedback = "4.2"
+        string DateAdded = "21/02/2020";
+        string Feedback = "4.2";
 
          [TestMethod]
         public void InstanceOK()
@@ -140,4 +140,5 @@ namespace Testing5
             Assert.AreEqual(ASupplier.Feedback, TestData);
 
         }
+    }
 
