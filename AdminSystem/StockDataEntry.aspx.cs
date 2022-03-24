@@ -36,15 +36,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
             AnStock.OnSale = chkOnSale.Checked;
             AnStock.QuantityInStock = Convert.ToInt32(txtQuantityInStock.Text);
-            AnStock.ToolID = Convert.ToInt32(txtToolID.Text);
+            //AnStock.ToolID = Convert.ToInt32(txtToolID.Text);
             AnStock.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
 
-            // store the tool in the session object
-            Session["AnStock"] = AnStock;
+            // create a new instance of the stock collection
+            clsStockCollection StockList = new clsStockCollection();
+            // set ThisStock property
+            StockList.ThisStock = AnStock;
+            // add the new record
+            StockList.Add();
+            // redirect back to the list page
+            Response.Redirect("StockList.aspx");
 
+            // store the tool in the session object
+            //Session["AnStock"] = AnStock;
             // navigate to the viewer page
-            Response.Redirect("StockViewer.aspx");
-        }  
+            //Response.Redirect("StockViewer.aspx");
+        }
         else
         {
             // display the error message
