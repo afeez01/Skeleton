@@ -11,7 +11,7 @@ namespace Testing2
         public bool Found { get; private set; }
 
         [TestMethod]
-        public void TestMethod1()
+        public void InstanceOK()
         {
             //create instance of class collection
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
@@ -30,7 +30,7 @@ namespace Testing2
             //create item to test Data 
             clsCustomer TestItem = new clsCustomer();
             //set properties 
-            TestItem.CustomerID = 1;
+            TestItem.CustomerID = 21;
             TestItem.CustomerDetails = "Bob Marley";
             TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
             TestItem.EmailAddress = "bobmarley@gmail.com";
@@ -45,6 +45,29 @@ namespace Testing2
         }
 
         [TestMethod]
+        public void ThisCustomerPropertyOK()
+        {
+            //create instance of class collection
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            //create tesat data to assign to the property
+            //in this case the data needs to be a list of objects
+            
+            //create item to test Data 
+            clsCustomer TestItem = new clsCustomer();
+            //set properties 
+            TestItem.CustomerID = 21;
+            TestItem.CustomerDetails = "Bob Marley";
+            TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
+            TestItem.EmailAddress = "bobmarley@gmail.com";
+            TestItem.AccountBalance = 50;
+            TestItem.OrderProcess = true;
+            //assign data to property 
+            AllCustomers.ThisCustomer = TestItem;
+            //test to see that it exist 
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+        }
+
+        [TestMethod]
         public void ListAndCountOK()
         {
             //create instance of class collection
@@ -55,11 +78,11 @@ namespace Testing2
             //create item to test Data 
             clsCustomer TestItem = new clsCustomer();
             //set properties 
-            TestItem.CustomerID = 2;
-            TestItem.CustomerDetails = "Rachel Silver";
-            TestItem.DateOfBirth = Convert.ToDateTime("17/04/1997");
-            TestItem.EmailAddress = "rachelsilver@gmail.com";
-            TestItem.AccountBalance = 150;
+            TestItem.CustomerID = 21;
+            TestItem.CustomerDetails = "Bob Marley";
+            TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
+            TestItem.EmailAddress = "bobmarley@gmail.com";
+            TestItem.AccountBalance = 50;
             TestItem.OrderProcess = true;
             //add test item to list 
             TestList.Add(TestItem);
@@ -80,11 +103,11 @@ namespace Testing2
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set properties 
-            TestItem.CustomerID = 2;
-            TestItem.CustomerDetails = "Rachel Silver";
-            TestItem.DateOfBirth = Convert.ToDateTime("17/04/1997");
-            TestItem.EmailAddress = "rachelsilver@gmail.com";
-            TestItem.AccountBalance = 150;
+            TestItem.CustomerID = 21;
+            TestItem.CustomerDetails = "Bob Marley";
+            TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
+            TestItem.EmailAddress = "bobmarley@gmail.com";
+            TestItem.AccountBalance = 50;
             TestItem.OrderProcess = true;
             //set ThisCustomer to the test data
             AllCustomers.ThisCustomer = TestItem;
@@ -109,10 +132,11 @@ namespace Testing2
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set properties 
-            TestItem.CustomerDetails = "Rachel Silver";
-            TestItem.DateOfBirth = Convert.ToDateTime("17/04/1997");
-            TestItem.EmailAddress = "rachelsilver@gmail.com";
-            TestItem.AccountBalance = 150;
+            TestItem.CustomerID = 21;
+            TestItem.CustomerDetails = "Bob Marley";
+            TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
+            TestItem.EmailAddress = "bobmarley@gmail.com";
+            TestItem.AccountBalance = 50;
             TestItem.OrderProcess = true;
             //set ThisCustomer to the test data
             AllCustomers.ThisCustomer = TestItem;
@@ -121,10 +145,10 @@ namespace Testing2
             //set primary key of test data
             TestItem.CustomerID = PrimaryKey;
             //modify test data
-            TestItem.CustomerDetails = "Willy Wonka";
-            TestItem.DateOfBirth = Convert.ToDateTime("5/05/1950");
-            TestItem.EmailAddress = "willwonka@gmail.com";
-            TestItem.AccountBalance = 90;
+            TestItem.CustomerDetails = "Bobby brown";
+            TestItem.DateOfBirth = Convert.ToDateTime("16/09/1992");
+            TestItem.EmailAddress = "bobbyBrown@gmail.com";
+            TestItem.AccountBalance = 500;
             TestItem.OrderProcess = false;
             //set record based on new set data
             AllCustomers.ThisCustomer = TestItem;
@@ -147,23 +171,25 @@ namespace Testing2
             //var to store primary key
             Int32 PrimaryKey = 0;
             //set properties 
-            TestItem.CustomerID = 2;
-            TestItem.CustomerDetails = "Rachel Silver";
-            TestItem.DateOfBirth = Convert.ToDateTime("17/04/1997");
-            TestItem.EmailAddress = "rachelsilver@gmail.com";
-            TestItem.AccountBalance = 150;
+            TestItem.CustomerID = 20;
+            TestItem.CustomerDetails = "Add Name";
+            TestItem.DateOfBirth = Convert.ToDateTime("1995-05-05");
+            TestItem.EmailAddress = "addname@gmail.com";
+            TestItem.AccountBalance = 40;
             TestItem.OrderProcess = true;
             //set ThisCustomer to the test data
             AllCustomers.ThisCustomer = TestItem;
+            
+            
             //ADD THE record
             PrimaryKey = AllCustomers.Add();
             //set primary key of test data
             TestItem.CustomerID = PrimaryKey;
-            //find the record
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             //update the record
             AllCustomers.Delete();
             //test to see that the two values are the same
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
 
