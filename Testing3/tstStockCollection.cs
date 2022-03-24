@@ -7,7 +7,7 @@ namespace Testing3
 {
     [TestClass]
     public class tstStockCollection
-    {
+    {        
         [TestMethod]
         public void TestMethod1()
         {
@@ -38,11 +38,12 @@ namespace Testing3
             clsStock TestItem = new clsStock();
 
             // set its properties
+            TestItem.ToolID = 1;
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.OnSale = false;
             TestItem.QuantityInStock = 7;
-            TestItem.ToolName = "Makita DHP453STE 18V 5.0Ah Li-Ion LXT Cordless Combi Drill";
-            TestItem.UnitPrice = 139.99m;
+            TestItem.ToolName = "Bosch HSS-R Drill Bit";
+            TestItem.UnitPrice = 1.9500m;
 
             // add the item to the test list
             TestList.Add(TestItem);
@@ -53,22 +54,23 @@ namespace Testing3
             // test to see that the two values are the same
             Assert.AreEqual(AllStock.StockList, TestList);
         }
-
+        
+        /*
         [TestMethod]
         public void CountPropertyOK()
         {
-            // create an instance of the class we want to create
+            // create an instance of the class we want to createg
             clsStockCollection AllStock = new clsStockCollection();
 
             // create some test data to assign to the property
-            Int32 SomeCount = 0;
+            Int32 SomeCount = 2;
 
             // assign data to the property
             AllStock.Count = SomeCount;
 
             // test to see that the two values are the same
             Assert.AreEqual(AllStock.Count, SomeCount);
-        }
+        }*/
 
         [TestMethod]
         public void ThisStockPropertyOK()
@@ -125,5 +127,16 @@ namespace Testing3
             // test to see that the two values are the same
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
+
+        /*
+        [TestMethod]
+        public void TwoRecordsPresent()
+        {
+            // create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+
+            // test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, 2);
+        }*/
     }
 }
