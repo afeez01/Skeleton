@@ -9,8 +9,10 @@ namespace Testing4
 
     [TestClass]
     public class tstOrderCollection
-    { 
-       [TestMethod]
+    {
+       
+
+        [TestMethod]
        public void InstanceOK()
         {
             //create an instance of the class we want to create
@@ -195,5 +197,60 @@ namespace Testing4
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
-}
+        [TestMethod]
+        public void ReportByShippingAddressMethodOK()
+        {
+            //create an instance of the class containing unfiltered results
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a blank string(should return all records);
+            FilteredOrders.ReportByShippingAddress("");
+            //test to see that the two values are the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+
+
+        }
+        [TestMethod]
+        public void ReportByShippingAddressNoneFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //apply a shipping address that does not exist
+            FilteredOrders.ReportByShippingAddress("ddddd");
+            //test to see that there are no records
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByShippingAddressTestDataFound()
+        {
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+
+            //var to store outcome
+            Boolean OK = true;
+            //apply a shipping address that does not exist
+            FilteredOrders.ReportByShippingAddress("ddddd");
+            //check that the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //check that the first record is ID 36
+                if (FilteredOrders.OrderList[0].OrderId != 20)
+                {
+                    OK = false;
+                }
+                //check that the first record is ID 37
+                if (FilteredOrders.OrderList[1].OrderId != 21)
+                {
+                    OK = false;
+                }
+            }
+            else
+             {  
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+    }
 }
