@@ -189,7 +189,7 @@ namespace Testing3
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.OnSale = false;
             TestItem.QuantityInStock = 17;
-            TestItem.ToolName = "Makita DHP453STE 18V 5.0Ah Li-Ion LXT Cordless Combi Drill ";
+            TestItem.ToolName = "Makita DHP453STE 18V 5.0Ah Li-Ion LXT Cordless Combi Drill";
             TestItem.UnitPrice = 139.99m;
 
             // set ThisStock to the test data
@@ -204,7 +204,7 @@ namespace Testing3
             TestItem.DateAdded = DateTime.Now.Date;
             TestItem.OnSale = true;
             TestItem.QuantityInStock = 50;
-            TestItem.ToolName = "Makita Cordless Combi Drill ";
+            TestItem.ToolName = "Makita Cordless Combi Drill";
             TestItem.UnitPrice = 100.99m;
             // set the record based on the new test data
             AllStock.ThisStock = TestItem;
@@ -299,18 +299,18 @@ namespace Testing3
             Boolean OK = true;
 
             // apply a tool name from the database  which has more than one occurrence
-            FilteredStock.ReportByToolName("Makita Cordless Combi Drill");
+            FilteredStock.ReportByToolName("Bosch HSS-R Drill Bit");
             // check that the correct number of records are found
             if(FilteredStock.Count == 2)
             {
-                // check that the first record is ID 15
-                if(FilteredStock.StockList[0].ToolID != 15)
+                // check that the first record is ID 1
+                if(FilteredStock.StockList[0].ToolID != 1)
                 {
                     OK = false;
                 }
 
-                // check that the first record is ID 19
-                if (FilteredStock.StockList[1].ToolID != 19)
+                // check that the first record is ID 53
+                if (FilteredStock.StockList[1].ToolID != 53)
                 {
                     OK = false;
                 }
