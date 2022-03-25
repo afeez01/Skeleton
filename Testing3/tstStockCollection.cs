@@ -177,6 +177,54 @@ namespace Testing3
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            // create an instance of the class we want to create
+            clsStockCollection AllStock = new clsStockCollection();
+
+            //create the item of test data
+            clsStock TestItem = new clsStock();
+
+            // var to store the primary key
+            Int32 PrimaryKey = 0;
+
+            // set its properties
+            //TestItem.ToolID = 4;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.OnSale = false;
+            TestItem.QuantityInStock = 17;
+            TestItem.ToolName = "Makita DHP453STE 18V 5.0Ah Li-Ion LXT Cordless Combi Drill ";
+            TestItem.UnitPrice = 139.99m;
+
+            // set ThisStock to the test data
+            AllStock.ThisStock = TestItem;
+            // add the record
+            PrimaryKey = AllStock.Add();
+            // set the primary key of the test data
+            TestItem.ToolID = PrimaryKey;
+
+            // modify the test data
+            //TestItem.ToolID = 4;
+            TestItem.DateAdded = DateTime.Now.Date;
+            TestItem.OnSale = true;
+            TestItem.QuantityInStock = 50;
+            TestItem.ToolName = "Makita Cordless Combi Drill ";
+            TestItem.UnitPrice = 100.99m;
+            // set the record based on the new test data
+            AllStock.ThisStock = TestItem;
+
+            // update the record
+            AllStock.Update();
+
+            // find the record
+            AllStock.ThisStock.Find(PrimaryKey);
+
+            // test to see that the two values are the same
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+
+        }
+
 
 
 

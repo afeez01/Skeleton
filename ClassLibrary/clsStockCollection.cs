@@ -132,5 +132,23 @@ namespace ClassLibrary
             // execute the query returning the primary key value
             return DB.Execute("sproc_tblTool_Insert");
         }
+
+        public void Update()
+        {
+            // update an existing record based on the values of mThisStock
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            // set the parameters for the stored procedure
+            DB.AddParameter("@ToolID", mThisStock.ToolID);
+            DB.AddParameter("@ToolName", mThisStock.ToolName);
+            DB.AddParameter("@QuantityInStock", mThisStock.QuantityInStock);
+            DB.AddParameter("@DateAdded", mThisStock.DateAdded);
+            DB.AddParameter("@UnitPrice", mThisStock.UnitPrice);
+            DB.AddParameter("@OnSale", mThisStock.OnSale);
+
+            // execute the query returning the primary key value
+            DB.Execute("sproc_tblTool_Update");
+        }
     }
 }
