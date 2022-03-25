@@ -217,7 +217,7 @@ namespace Testing4
             //create an instance of the filtered data
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             //apply a shipping address that does not exist
-            FilteredOrders.ReportByShippingAddress("ddddd");
+            FilteredOrders.ReportByShippingAddress("ttttt");
             //test to see that there are no records
             Assert.AreEqual(0, FilteredOrders.Count);
         }
