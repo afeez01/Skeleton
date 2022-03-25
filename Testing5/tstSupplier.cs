@@ -20,7 +20,7 @@ namespace Testing5
         public void InstanceOK()
         {
             //create an instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //test to see that it exists
             Assert.IsNotNull(ASupplier);
@@ -30,7 +30,7 @@ namespace Testing5
         public void SupplierIdOK()
         {
             //create an instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //create some test data to assign to the property
             Int16 TestData = 1;
@@ -46,7 +46,7 @@ namespace Testing5
         public void NameOK()
         {
             //create a new instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
             string TestData = "Factory";
@@ -62,7 +62,7 @@ namespace Testing5
         public void AddressOK()
         {
             //create a new instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
             string TestData = "Industry ST";
@@ -78,7 +78,7 @@ namespace Testing5
         public void DateAddedOK()
         {
             //create a new instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
@@ -94,7 +94,7 @@ namespace Testing5
         public void GlobalSupplierOK()
         {
             //create a new instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
             Boolean TestData = true;
@@ -110,10 +110,10 @@ namespace Testing5
         public void FeedbackOK()
         {
             //create a new instance of the class we want to create
-            clsSupplier ASupplier = new clsSuppplier();
+            clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
-            Int16 TestData = 4.2;
+            Double TestData = 4.2;
 
             //assign the data to the property   
             ASupplier.Feedback = TestData;
