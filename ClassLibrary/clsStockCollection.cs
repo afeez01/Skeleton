@@ -11,17 +11,30 @@ namespace ClassLibrary
         clsStock mThisStock = new clsStock();
 
         public clsStockCollection()
+        {           
+            // object for data connection
+            clsDataConnection DB = new clsDataConnection();
+
+            // execute the stored procedure
+            DB.Execute("sproc_tblTool_SelectAll");
+
+            // populate the array list with the data table
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
         {
+            // populate the array list based on the data table in the parameter DB
             // var for the index
             Int32 Index = 0;
             // var to store the record count
-            Int32 RecordCount = 0;
-            // object for data connection
-            clsDataConnection DB = new clsDataConnection();
-            // execute the stored procedure
-            DB.Execute("sproc_tblTool_SelectAll");
+            Int32 RecordCount;
+
             // get count of records
             RecordCount = DB.Count;
+            // clear the private array list
+            //mStockList.Clear(); // bug wont clear!!
+            mStockList = new List<clsStock>();
 
             // while there are records to process do
             while (Index < RecordCount)
@@ -43,33 +56,6 @@ namespace ClassLibrary
                 // point at the next rexord
                 Index++;
             }
-
-            /*//create the item of test data
-            clsStock TestItem = new clsStock();
-
-            // set its properties
-            TestItem.ToolID = 1;
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.OnSale = false;
-            TestItem.QuantityInStock = 7;
-            TestItem.ToolName = "Bosch HSS-R Drill Bit";
-            TestItem.UnitPrice = 1.9500m;
-            // add item to the test list
-            mStockList.Add(TestItem);
-
-            // reinitialise the object for some new data
-            TestItem = new clsStock();
-
-            // set its properties
-            TestItem.ToolID = 2;
-            TestItem.DateAdded = DateTime.Now.Date;
-            TestItem.OnSale = true;
-            TestItem.QuantityInStock = 2;
-            TestItem.ToolName = "Bahco 244 Super Sharp Hard Point Hand Saw";
-            TestItem.UnitPrice = 6.9500m;
-            // add item to the test list
-            mStockList.Add(TestItem);*/
-
         }
 
         public List<clsStock> StockList 
@@ -163,5 +149,21 @@ namespace ClassLibrary
             // execute the query returning the primary key value
             DB.Execute("sproc_tblTool_Delete");
         }
+
+        public void ReportByToolName(string ToolName)
+        {
+            // filter the records based on Tool name
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            // send the tool name  parameter to the database
+            DB.AddParameter("@ToolName", ToolName);
+
+            // execute the query returning the primary key value
+            DB.Execute("sproc_tblTool_FilterByToolName");
+
+            // populate the array list with the data table
+            PopulateArray(DB);
+        }        
     }
 }
