@@ -8,8 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    // variable to store the primary key with page level scope
+    Int32 ToolID;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        // get the number of the stock to be processed
+        ToolID = Convert.ToInt32(Session["ToolID"]);
+        if(IsPostBack == false)
+        {
+            // if this is not a new record
+            if(ToolID != -1)
+            {
+                // display the current data for the record
+                DisplayStock();
+            }
+        }
+    }
+
+    void DisplayStock()
+    {
+        // create a new instance of the stock collection
+        clsStockCollection StockList = new clsStockCollection();
+        // find the record to update
+        StockList.ThisStock.Find(ToolID);
+        //display the data for this record
+        txtToolID.Text = StockList.ThisStock.ToolID.ToString();
+        txtToolName.Text = StockList.ThisStock.ToolName;
+        txtQuantityInStock.Text = StockList.ThisStock.QuantityInStock.ToString();
+        txtUnitPrice.Text = StockList.ThisStock.UnitPrice.ToString();
+        txtDateAdded.Text = StockList.ThisStock.DateAdded.ToString();
+        chkOnSale.Checked = StockList.ThisStock.OnSale;
 
     }
 
@@ -32,19 +61,34 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if(Error == "")
         {
             // capture the tool
-            AnStock.ToolName = txtToolName.Text;
-            AnStock.DateAdded = Convert.ToDateTime(txtDateAdded.Text);
+            AnStock.ToolID = ToolID;
+            AnStock.ToolName = ToolName;
+            AnStock.DateAdded = Convert.ToDateTime(DateAdded);
             AnStock.OnSale = chkOnSale.Checked;
-            AnStock.QuantityInStock = Convert.ToInt32(txtQuantityInStock.Text);
-            //AnStock.ToolID = Convert.ToInt32(txtToolID.Text);
-            AnStock.UnitPrice = Convert.ToDecimal(txtUnitPrice.Text);
+            AnStock.QuantityInStock = Convert.ToInt32(QuantityInStock);            
+            AnStock.UnitPrice = Convert.ToDecimal(UnitPrice);
 
             // create a new instance of the stock collection
             clsStockCollection StockList = new clsStockCollection();
-            // set ThisStock property
-            StockList.ThisStock = AnStock;
-            // add the new record
-            StockList.Add();
+
+            //if this is a new record i.e. ToolID = -1 then add the data
+            if(ToolID == -1)
+            {
+                // set ThisStock property
+                StockList.ThisStock = AnStock;
+                // add the new record
+                StockList.Add();
+            }
+            else // otherwise it must be an update
+            {
+                // find the record to update
+                StockList.ThisStock.Find(ToolID);
+                //set the ThisStock property
+                StockList.ThisStock = AnStock;
+                // update the record
+                StockList.Update();
+            }
+            
             // redirect back to the list page
             Response.Redirect("StockList.aspx");
 
