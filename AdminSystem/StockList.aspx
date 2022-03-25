@@ -14,6 +14,7 @@
         <p>
             <asp:Button ID="btnAdd" runat="server" CausesValidation="False" OnClick="btnAdd_Click" Text="Add" Width="61px" />
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="position: relative; z-index: 1; left: 10px; top: 1px" Text="Edit" width="61px" />
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="position: relative; top: 2px; left: 25px" Text="Delete" width="61px" />
         </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
     </form>
