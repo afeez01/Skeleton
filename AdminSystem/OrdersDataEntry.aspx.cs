@@ -8,11 +8,37 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 OrderId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of the address to be processed
+        OrderId = Convert.ToInt32(Session["OrderId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if(OrderId != -1)
+            {
+                //display the current data for the record
+                DisplayOrder();
+            }
+        }
 
     }
-
+    void DisplayOrder()
+            {
+                // create a new instance of the stock collection
+                clsOrderCollection Orders = new clsOrderCollection();
+                // find the record to update
+                Orders.ThisOrder.Find(OrderId);
+                //display the data for this record
+                txtOrderId.Text = Orders.ThisOrder.OrderId.ToString();
+                txtCustomerId.Text = Orders.ThisOrder.CustomerId.ToString();
+                txtShippingAddress.Text = Orders.ThisOrder.ShippingAddress;
+                txtOrderEmail.Text = Orders.ThisOrder.OrderEmail;
+                txtOrderDate.Text = Orders.ThisOrder.OrderDate.ToString();
+                chkOrderCompleted.Checked = Orders.ThisOrder.OrderCompleted;
+  
+    }
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsOrder
@@ -39,6 +65,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
 
             //capture the order
+            AnOrder.OrderId = OrderId;
             AnOrder.CustomerId = Convert.ToInt32(CustomerId);
             AnOrder.ShippingAddress = ShippingAddress;
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
@@ -47,13 +74,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
             //create a new instance of the address collection
             clsOrderCollection OrderList = new clsOrderCollection();
-            //set the ThisOrder property
-            OrderList.ThisOrder = AnOrder;
-            //add the new record
-            OrderList.Add();
 
-            //navigate to the viewer page
-            Response.Redirect("OrdersList.aspx");
+            //if this is a new record i.e OrderId = -1 then add the data
+            if(OrderId == -1)
+            {
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //add the new record
+                OrderList.Add();
+            }
+            //otherwise it must be uodate
+            else
+            {
+                //find the record to update
+                OrderList.ThisOrder.Find(OrderId);
+                //set the ThisOrder property
+                OrderList.ThisOrder = AnOrder;
+                //update the record
+                OrderList.Update();
+            }
+                Response.Redirect("OrdersList.aspx");
 
 
         }
@@ -91,9 +131,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
             
     }
 }
-
-
-
-
 
 }
