@@ -260,6 +260,70 @@ namespace Testing3
             Assert.IsFalse(Found);
         }
 
+        [TestMethod]
+        public void ReportByToolNameMethodOK()
+        {
+            // create an instance of the class containing unfiltered results
+            clsStockCollection AllStock = new clsStockCollection();
+
+            // create an instance of the class of filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            // apply a blank string (should return all records)
+            FilteredStock.ReportByToolName("");
+            // test to see that the two values are the same
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByToolNameNoneFound()
+        {           
+            // create an instance of the class of filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            // apply a tool name that does not exist
+            FilteredStock.ReportByToolName("xxxxx");
+            // test to see that the two values are the same
+            Assert.AreEqual(0, FilteredStock.Count);
+
+        }
+
+        [TestMethod]
+        public void ReportByToolNameTestDataFound()
+        {
+            // create an instance of the class of filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+
+            // var to store outcome
+            Boolean OK = true;
+
+            // apply a tool name from the database  which has more than one occurrence
+            FilteredStock.ReportByToolName("Makita Cordless Combi Drill");
+            // check that the correct number of records are found
+            if(FilteredStock.Count == 2)
+            {
+                // check that the first record is ID 15
+                if(FilteredStock.StockList[0].ToolID != 15)
+                {
+                    OK = false;
+                }
+
+                // check that the first record is ID 19
+                if (FilteredStock.StockList[1].ToolID != 19)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+
+            // test to see that there are no records
+            Assert.IsTrue(OK);
+        }
+
 
 
 

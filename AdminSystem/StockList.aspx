@@ -16,7 +16,15 @@
             <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="position: relative; z-index: 1; left: 10px; top: 1px" Text="Edit" width="61px" />
             <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="position: relative; top: 2px; left: 25px" Text="Delete" width="61px" />
         </p>
+        <p>
+            Enter a tool name<asp:TextBox ID="txtFilter" runat="server" style="position: relative; top: 0px; left: 16px; width: 263px"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply" />
+            <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" style="position: relative; top: 0px; left: 10px" Text="Clear" width="49px" />
+        </p>
         <asp:Label ID="lblError" runat="server"></asp:Label>
+        <br />
     </form>
 </body>
 </html>
