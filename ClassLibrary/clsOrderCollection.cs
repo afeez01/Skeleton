@@ -5,8 +5,12 @@ namespace ClassLibrary
 {
     public class clsOrderCollection
     {
+ 
+       
         //private data member for the list
         List<clsOrder> mOrderList = new List<clsOrder>();
+        //private data member thisOrder
+        clsOrder mThisOrder = new clsOrder();
         public clsOrderCollection()
         {
             //var for the index
@@ -70,6 +74,35 @@ namespace ClassLibrary
                
         }
     }
-    public clsOrder ThisOrder { get; set; }
+    //public property for ThisOrder
+    public clsOrder ThisOrder 
+        {
+            get
+            {
+               //return the private data
+                return mThisOrder;
+            }
+            set
+            {
+               //set the private data    
+                    mThisOrder = value; 
+        }
+    }
+
+        public int Add()
+        {
+            //adds a new record to the database on the values of mThisOrder
+            //set the primary key value of the new record
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@CustomerId", mThisOrder.CustomerId);
+            DB.AddParameter("@ShippingAddress", mThisOrder.ShippingAddress);
+            DB.AddParameter("@OrderEmail", mThisOrder.OrderEmail);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@OrderCompleted", mThisOrder.OrderCompleted);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblOrder_Insert");
+        }
     }
 }

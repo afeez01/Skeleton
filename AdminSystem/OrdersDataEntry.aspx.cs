@@ -38,25 +38,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
 
-            //capture the customer id
-            AnOrder.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-
-            //capture the shipping address
+            //capture the order
+            AnOrder.CustomerId = Convert.ToInt32(CustomerId);
             AnOrder.ShippingAddress = ShippingAddress;
-
-            //capture the order date
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
-
-            //capture the order email
             AnOrder.OrderEmail = OrderEmail;
+            AnOrder.OrderCompleted = chkOrderCompleted.Checked;
 
-
-
-            //store the order in the session object
-            Session["AnOrder"] = AnOrder;
+            //create a new instance of the address collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
 
             //navigate to the viewer page
-            Response.Redirect("OrdersViewer.aspx");
+            Response.Redirect("OrdersList.aspx");
 
 
         }
@@ -90,7 +87,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
          txtShippingAddress.Text  = AnOrder.ShippingAddress;
          txtOrderDate.Text  = AnOrder.OrderDate.ToString();
          txtOrderEmail.Text = AnOrder.OrderEmail;
-         chkOrderCompleted.Text = AnOrder.OrderCompleted.ToString();
+      
             
     }
 }
