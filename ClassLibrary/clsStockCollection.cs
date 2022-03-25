@@ -150,5 +150,18 @@ namespace ClassLibrary
             // execute the query returning the primary key value
             DB.Execute("sproc_tblTool_Update");
         }
+
+        public void Delete()
+        {
+            // delete the record pointed by  mThisStock
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+
+            // set the parameters for the stored procedure
+            DB.AddParameter("@ToolID", mThisStock.ToolID);
+
+            // execute the query returning the primary key value
+            DB.Execute("sproc_tblTool_Delete");
+        }
     }
 }

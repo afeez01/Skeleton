@@ -65,4 +65,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to edit from the list";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        // var to store the primary key value of the record to be edited
+        Int32 ToolID;
+
+        // if a record has been selected from the list
+        if (lstStockList.SelectedIndex != -1)
+        {
+            // get the primary key value of the record to edit
+            ToolID = Convert.ToInt32(lstStockList.SelectedValue);
+            // store the data in the session object
+            Session["ToolID"] = ToolID;
+            // redircet to the data entry page
+            Response.Redirect("StockConfirmDelete.aspx");
+        }
+        else // if no record has been selected
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
 }
