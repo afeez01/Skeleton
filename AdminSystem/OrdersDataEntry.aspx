@@ -26,7 +26,7 @@
         <p>
             &nbsp;</p>
         <p>
-            <asp:CheckBox ID="chkOrderCompleted" runat="server" Text="Order Completed" OnCheckedChanged="chkOrderCompleted_CheckedChanged" />
+            <asp:CheckBox ID="chkOrderCompleted" runat="server" Text="Order Completed" />
         </p>
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>

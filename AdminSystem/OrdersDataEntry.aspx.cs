@@ -90,14 +90,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
          txtShippingAddress.Text  = AnOrder.ShippingAddress;
          txtOrderDate.Text  = AnOrder.OrderDate.ToString();
          txtOrderEmail.Text = AnOrder.OrderEmail;
+         chkOrderCompleted.Text = AnOrder.OrderCompleted.ToString();
             
     }
 }
 
 
 
-    protected void chkOrderCompleted_CheckedChanged(object sender, EventArgs e)
-    {
 
-    }
+
 }
