@@ -122,6 +122,193 @@ namespace Testing5
             Assert.AreEqual(ASupplier.Feedback, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //assign the data to the property   
+            Found = ASupplier.Find(SupplierId);
+
+            //test to see if the result is found
+            Assert.IsTrue(Found);
+
+        }
+        [TestMethod]
+        public void testSupplierNoFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check SupplierId
+            if (ASupplier.SupplierId != 21)
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
+        [TestMethod]
+        public void testDateAddedFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check Property
+            if (ASupplier.DateAdded != Convert.ToDateTime("16/09/2015"))
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
+        [TestMethod]
+        public void testAddressFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check Property
+            if (ASupplier.Address != "Industry ST")
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
+        [TestMethod]
+        public void testNameFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check Property
+            if (ASupplier.Name != "Tool Factory")
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
+        [TestMethod]
+        public void testGlobalSupplierFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check Property
+            if (ASupplier.GlobalSupplier != true)
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
+        [TestMethod]
+        public void testFeedbackFound()
+        {
+            //create a new instance of the class we want to create
+            clsSupplier ASupplier = new clsSupplier();
+
+            //Variable to store results of validation
+            Boolean Found = false;
+
+            //Variable to store results of validation
+            Boolean ok = true;
+
+            //creat some test data to assign to the method
+            Int32 SupplierId = 21;
+
+            //invoke method    
+            Found = ASupplier.Find(SupplierId);
+
+            //check Property
+            if (ASupplier.Feedback != 4.2)
+            {
+                ok = false;
+            }
+
+            //test to see if the result is correct
+            Assert.IsTrue(ok);
+
+        }
     }
 }
 
