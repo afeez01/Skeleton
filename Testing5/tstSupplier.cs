@@ -188,7 +188,7 @@ namespace Testing5
             Found = ASupplier.Find(SupplierId);
 
             //check Property
-            if (ASupplier.DateAdded != Convert.ToDateTime("16/09/2015"))
+            if (ASupplier.DateAdded != Convert.ToDateTime("21/02/2020"))
             {
                 ok = false;
             }
@@ -244,7 +244,7 @@ namespace Testing5
             Found = ASupplier.Find(SupplierId);
 
             //check Property
-            if (ASupplier.Name != "Tool Factory")
+            if (ASupplier.Name != "Factory")
             {
                 ok = false;
             }
