@@ -10,7 +10,7 @@ namespace ClassLibrary
         private string mName;
         private string mAddress;
         private bool mGlobalSupplier;
-        private Double mFeedback;
+        private decimal mFeedback;
 
         public Int32 SupplierId
         {
@@ -65,7 +65,7 @@ namespace ClassLibrary
                 mGlobalSupplier = value;
             }
         }
-        public Double Feedback
+        public Decimal Feedback
         {
             get
             {
@@ -79,14 +79,24 @@ namespace ClassLibrary
 
         public bool Find(int SupplierId)
         {
-            mSupplierId = 21;
-            mDateAdded = Convert.ToDateTime("16/09/2015");
-            mName = "Tool Factory";
-            mAddress = "Industry ST";
-            mGlobalSupplier = true;
-            mFeedback = 4.2;
-
-            return true;
+            //create an isntance of the data collection
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SupplierId", SupplierId);
+            DB.Execute("sproc_tblSupplier_FilterBySupplierId");
+            if (DB.Count == 1)
+            {
+                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierId"]);
+                mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mGlobalSupplier = Convert.ToBoolean(DB.DataTable.Rows[0]["GlobalSupplier"]);
+                mFeedback = Convert.ToDecimal(DB.DataTable.Rows[0]["Feedback"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

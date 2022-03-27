@@ -9,12 +9,12 @@ namespace Testing5
     {
         //Test data
 
-        string SupplierId = "0500";
-        string Name = "Tool Factory";
-        string Address = "Tool Factory, Industry ST";
+        string SupplierId = "21";
+        string Name = "Factory";
+        string Address = "Industry ST";
         Boolean GlobalSupplier  = true;
         string DateAdded = "21/02/2020";
-        string Feedback = "4.2";
+        string Feedback = "1";
 
          [TestMethod]
         public void InstanceOK()
@@ -81,7 +81,7 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
+            DateTime TestData = Convert.ToDateTime("21 / 02 / 2020");
 
             //assign the data to the property   
             ASupplier.DateAdded = TestData;
@@ -113,7 +113,7 @@ namespace Testing5
             clsSupplier ASupplier = new clsSupplier();
 
             //creat some test data to assign to the property
-            Double TestData = 4.2;
+            decimal TestData = 4;
 
             //assign the data to the property   
             ASupplier.Feedback = TestData;
@@ -300,7 +300,7 @@ namespace Testing5
             Found = ASupplier.Find(SupplierId);
 
             //check Property
-            if (ASupplier.Feedback != 4.2)
+            if (ASupplier.Feedback != 1)
             {
                 ok = false;
             }
