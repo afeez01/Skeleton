@@ -21,57 +21,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //create an instance of clsStaff
             clsStaff AnStaff = new clsStaff();
             //capture the full name
-            txtStaffId.Text = AnStaff.StaffId.ToString();
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
+            string FullName = txtFullName.Text;
+            //capture the salary
+            string Salary = txtSalary.Text;
+            //capture the date added
+            string DateAdded = txtDateAdded.Text;
+            //capture the address
+            string Address = txtAddress.Text;
+            //variable to store any error messages
+            string Error = "";
+            //validate the data
+            Error = AnStaff.Valid(FullName, Salary, DateAdded, Address);
+            if (Error == "")
+            {
+                //capture the full name
+                AnStaff.FullName = FullName;
+                //capture the salary
+                AnStaff.Salary = Convert.ToDouble(Salary);
+                //capture the date added
+                AnStaff.DateAdded = Convert.ToDateTime(DateAdded);
+                //capture the address
+                AnStaff.Address = Address;
+                //store the address in the session object
+                Session["AnStaff"] = AnStaff;
+                //redirect to the viewer page
+                Response.Redirect("StaffViewer.aspx");
+            }
+            else
+            {
+                //display the error message
+                lblError.Text = Error;
+            }
         }
-
-        {
-            //create an instance of clsStaff
-            clsStaff AnStaff = new clsStaff();
-            //capture the full name
-            txtFullName.Text = AnStaff.FullName;
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
-        }
-
-        {
-            //create an instance of clsStaff
-            clsStaff AnStaff = new clsStaff();
-            //capture the full name
-            txtSalary.Text = AnStaff.Salary.ToString();
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
-        }
-
-        {
-            //create an instance of clsStaff
-            clsStaff AnStaff = new clsStaff();
-            //capture the full name
-            txtDateAdded.Text = AnStaff.DateAdded.ToString(); 
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
-        }
-
-        {
-            //create an instance of clsStaff
-            clsStaff AnStaff = new clsStaff();
-            //capture the full name
-            txtAddress.Text = AnStaff.Address;
-            //store the staff in the session object
-            Session["AnStaff"] = AnStaff;
-            //navigate to the viewer page
-            Response.Redirect("StaffViewer.aspx");
-        }
-
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

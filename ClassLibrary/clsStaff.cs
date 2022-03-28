@@ -188,11 +188,7 @@ namespace ClassLibrary
             {
                 //copy the DateAdded value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(DateAdded);
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    //record the error
-                    Error = Error + "The date cannot be in the past : ";
-                }
+                
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateTime.Now.Date)
                 {

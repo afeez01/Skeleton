@@ -455,48 +455,6 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void DateAddedExtremeMin()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create a variable to store the test date data
-            DateTime TestDate;
-            //set the date totodays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 100 years
-            TestDate = TestDate.AddYears(-100);
-            //convert the date variable to a string variable
-            string DateAdded = TestDate.ToString();
-            //invoke the method
-            Error = AnStaff.Valid(FullName, Salary, DateAdded, Address);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
-        public void DateAddedMinLessOne()
-        {
-            //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
-            //string variable to store any error message
-            String Error = "";
-            //create a variable to store the test date data
-            DateTime TestDate;
-            //set the date totodays date
-            TestDate = DateTime.Now.Date;
-            //change the date to whatever the date is less 1 day
-            TestDate = TestDate.AddDays(-1);
-            //convert the date variable to a string variable
-            string DateAdded = TestDate.ToString();
-            //invoke the method
-            Error = AnStaff.Valid(FullName, Salary, DateAdded, Address);
-            //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
-        }
-
-        [TestMethod]
         public void DateAddedMin()
         {
             //create an instance of the class we want to create
