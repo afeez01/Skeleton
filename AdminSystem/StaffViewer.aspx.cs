@@ -14,17 +14,13 @@ public partial class _1Viewer : System.Web.UI.Page
         clsStaff AnStaff = new clsStaff();
         //get the data from the session object
         AnStaff = (clsStaff)Session["AnStaff"];
-        //display the full name for this entry
-        Response.Write(AnStaff.StaffId);
-        Response.Write("<br/>");
-        Response.Write(AnStaff.FullName);
-        Response.Write("<br/>");
-        Response.Write(AnStaff.Salary);
-        Response.Write("<br/>");
-        Response.Write(AnStaff.DateAdded);
-        Response.Write("<br/>");
-        Response.Write(AnStaff.Address);
-        Response.Write("<br/>");
-        Response.Write(AnStaff.PermanentEmployment);
+        //display the full name for this entry      
+        Response.Write("Staff ID =" + AnStaff.StaffId + "<br />");
+        Response.Write("Full Name =" + AnStaff.FullName + "<br />");
+        Response.Write("Salary =" + AnStaff.Salary + "<br />");
+        Response.Write("Date added =" + AnStaff.DateAdded + "<br />");
+        Response.Write("Address =" + AnStaff.Address + "<br />");
+        Response.Write("Permanent Employment =" + AnStaff.PermanentEmployment + "<br />");
+
     }
 }
