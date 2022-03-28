@@ -99,7 +99,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string Name, string Address, string DateAdded, string Feedback)
+        public string Valid(string DateAdded, string Name, string Feedback, string Address)
         {
             //create string for the error
             string Error = "";
@@ -127,10 +127,10 @@ namespace ClassLibrary
                 }
             }
             //DateAdded needs to be in valid format
-            catch
+            catch(Exception e)
             {
 
-                Error = Error + "The date needs to be in valid format, ";
+                Error = Error + "The date needs to be in valid format, " + e;
             }
 
             //Min for Address
@@ -156,9 +156,9 @@ namespace ClassLibrary
                 }
 
             }
-            catch
+            catch(Exception i)
             {
-                Error += "This is not a valid feedback number, ";
+                Error += "This is not a valid feedback number, " + i;
             }
 
 

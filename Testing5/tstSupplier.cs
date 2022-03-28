@@ -13,7 +13,7 @@ namespace Testing5
         string Name = "Factory";
         string Address = "Industry ST";
         Boolean GlobalSupplier  = true;
-        string DateAdded = "21/02/2020";
+        string DateAdded = DateTime.Today.ToString();
         string Feedback = "1";
 
          [TestMethod]
