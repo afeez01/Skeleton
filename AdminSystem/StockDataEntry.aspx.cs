@@ -112,24 +112,46 @@ public partial class _1_DataEntry : System.Web.UI.Page
         // variable to store the primary key
         Int32 ToolID;
 
+        // Variable to store any error
+        lblError.Text = "";
+
         // variable to store the results of find operation
         Boolean Found = false;
-
-        // get the primary key entered by the user
-        ToolID = Convert.ToInt32(txtToolID.Text);
-
-        // find the record
-        Found = AnStock.Find(ToolID);
-        // check the result
-        if (Found)
+        try
         {
-            txtToolID.Text = AnStock.ToolID.ToString();
-            txtToolName.Text = AnStock.ToolName;
-            txtQuantityInStock.Text = AnStock.QuantityInStock.ToString();
-            txtUnitPrice.Text = AnStock.UnitPrice.ToString();
-            txtDateAdded.Text = AnStock.DateAdded.ToString();
+            // get the primary key entered by the user
+            ToolID = Convert.ToInt32(txtToolID.Text);
+
+            // find the record
+            Found = AnStock.Find(ToolID);
+            // check the result
+            if (Found)
+            {
+                txtToolID.Text = AnStock.ToolID.ToString();
+                txtToolName.Text = AnStock.ToolName;
+                txtQuantityInStock.Text = AnStock.QuantityInStock.ToString();
+                txtUnitPrice.Text = AnStock.UnitPrice.ToString();
+                txtDateAdded.Text = AnStock.DateAdded.ToString();
 
 
+            }
+            else
+            {
+                // display the error message
+            lblError.Text = "Tool id not found";
+            }
         }
+        catch
+        {
+            // display the error message
+            lblError.Text = "Invalid tool id";
+        }
+        
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        // redirect back to the list page
+        Response.Redirect("StockList.aspx");
     }
 }
