@@ -189,33 +189,33 @@ namespace ClassLibrary
             //***********************************************************************
             try
             {
-                int result = Int32.Parse(quantityInStock);
+                Int32 result = Convert.ToInt32(quantityInStock);
                 if (result < 0)
                 {
                     // record the error
                     Error = Error + "The quantity in stock cannot be less than zero : ";
                 }
             }
-            catch (FormatException)
+            catch // if the covertion fails the catch will be triggered 
             {
                 // record the error 
-                Error = Error + "The quantity in stock has invalid format! : ";
+                Error = Error + "The quantity in stock is not valid! : ";
             }
 
             //***********************************************************************
             try
             {
-                decimal result = Decimal.Parse(unitPrice);
+                decimal result = Convert.ToDecimal(unitPrice);
                 if (result < 0)
                 {
                     // record the error
-                    Error = Error + "The unit price cannot be less than zero : ";
+                    Error = Error + "The unit price cannot be less than zero";
                 }
             }
-            catch
+            catch // if the covertion fails the catch will be triggered 
             {
                 // record the error
-                Error = Error + "The unit price has invalid format! : ";
+                Error = Error + "The unit price is not valid!";
             }
 
 

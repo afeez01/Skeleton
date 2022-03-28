@@ -696,6 +696,65 @@ namespace Testing3
         }
 
         [TestMethod]
+        public void QuantityInStockMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the quantity in stock
+            String QuantityInStock = (Int32.MaxValue - 1).ToString(); // this should pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInStockMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the quantity in stock
+            String QuantityInStock = (Int32.MaxValue).ToString(); // this should pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void QuantityInStockMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the quantity in stock
+            String QuantityInStock = ((Int64)(Int32.MaxValue)  + 1).ToString(); // this should NOT pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
         public void QuantityInStockInvalidData()
         {
             //create an instance of the class we want to create
@@ -789,6 +848,64 @@ namespace Testing3
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UnitPriceMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the UnitPrice
+            String UnitPrice = (Decimal.MaxValue - 1).ToString(); // this should pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void UnitPriceMax()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the UnitPrice
+            String UnitPrice = (Decimal.MaxValue).ToString(); // this should pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void UnitPriceMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+
+            //string variable to store any error message
+            String Error = "";
+
+            // create a variable to store the UnitPrice
+            String UnitPrice = ((Double)(Decimal.MaxValue) + 1).ToString(); // this should not pass
+
+            //invoke the method
+            Error = AnStock.Valid(ToolName, QuantityInStock, DateAdded, UnitPrice);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
