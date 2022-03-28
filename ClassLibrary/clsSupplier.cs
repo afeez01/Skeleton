@@ -98,5 +98,73 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string Name, string Address, string DateAdded, string Feedback)
+        {
+            //create string for the error
+            string Error = "";
+            DateTime DateTemp;
+            double DoubleTemp;
+
+            //Min for Name
+            if (Name.Length == 0)
+            {
+                Error = Error + "The Name Cannot be blank, ";
+            }
+            //Max for Name
+            if (Name.Length > 50)
+            {
+                Error = Error + "The Name has a limit of 50 characters, ";
+            }
+            //DateAdded must be today
+            try
+            {
+                DateTemp = Convert.ToDateTime(DateAdded);
+
+                if (DateTemp != DateTime.Now.Date)
+                {
+                    Error = Error + "The date must be today, ";
+                }
+            }
+            //DateAdded needs to be in valid format
+            catch
+            {
+
+                Error = Error + "The date needs to be in valid format, ";
+            }
+
+            //Min for Address
+            if (Address.Length == 0)
+            {
+                Error = Error + "The Address Cannot be blank, ";
+            }
+            //Max for Address
+            if (Address.Length > 50)
+            {
+                Error = Error + "The Address has a limit of 50 characters, ";
+            }
+            try
+            {
+                DoubleTemp = Convert.ToDouble(Feedback);
+                if (DoubleTemp < 0.0)
+                {
+                    Error += "Feedback cannot be negative,  ";
+                }
+                if (DoubleTemp > 5.0)
+                {
+                    Error += "Feedback cannot excead 5.0,  ";
+                }
+
+            }
+            catch
+            {
+                Error += "This is not a valid feedback number, ";
+            }
+
+
+
+            return Error;
+                
+        }
     }
 }
