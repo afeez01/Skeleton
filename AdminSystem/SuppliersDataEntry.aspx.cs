@@ -48,11 +48,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             //display the values in the form
-            txtAddress.Text = ASupplier.Address;
-            txtDateAdded.Text = ASupplier.DateAdded.ToString();
-            txtFeedback.Text = ASupplier.Feedback.ToString();
-            txtName.Text = ASupplier.Name;
+            string Address = txtAddress.Text;
+            string DateAdded = txtDateAdded.Text;
+            string Feedback = txtFeedback.Text;
+            string Name = txtName.Text;
             cbGlobal.Checked = true;
+            string Error = "";
+            //Validate data
+            ASupplier.Valid(Address, Name, DateAdded, Feedback);
+            if (Error == "")
+            {
+                Address = ASupplier.Address;
+                DateAdded = ASupplier.DateAdded.ToString();
+                Feedback = ASupplier.Feedback.ToString();
+                Name = ASupplier.Name;
+            }
+            else
+            {
+                lblError.Text = Error;
+            }
 
         }
     }
