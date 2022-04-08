@@ -25,7 +25,7 @@
         <br />
         <br />
         <p>
-            <asp:Label ID="lblError" runat="server" Text="[lblError]"></asp:Label>
+            <asp:Label ID="lblError" runat="server" ></asp:Label>
         </p>
     </form>
 </body>
