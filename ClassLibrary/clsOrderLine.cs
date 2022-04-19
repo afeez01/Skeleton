@@ -60,37 +60,37 @@ namespace ClassLibrary
             }
         }
         //OrderDate private member variable
-        private Int32 mQuantity;
+        private string mDescription;
         //OrderDate public property
-        public Int32 Quantity
+        public string Description
         {
             get
             {
                 //this line of code sends data out of the property
-                return mQuantity;
+                return mDescription;
             }
             set
             {
                 //this line of code allows data into the property 
-                mQuantity = value;
+                mDescription = value;
             }
         }
 
         //OrderEmail private member variable
-        private Decimal mPrice;
+        private DateTime mOrderLineDate;
         //OrderEmail public property
-        public decimal Price
+        public DateTime OrderLineDate
         {
             get
             {
                 //this line of code sends data out of the property
-                return mPrice;
+                return mOrderLineDate;
 
             }
             set
             {
                 //this line of code allows data into the property 
-                mPrice = value;
+                mOrderLineDate = value;
                 
             }
         }
@@ -117,7 +117,7 @@ namespace ClassLibrary
             //add the parameter for the order id to search for
             DB.AddParameter("@OrderLineID", OrderLineID);
             //execute the stored procedure
-            DB.Execute("sproc_tblOrderLine_FilterByOrderLineID");
+            DB.Execute("sproc_tblOrderLine1_FilterByOrderLineID");
             //if one record is found 
             if (DB.Count == 1)
             {
@@ -125,8 +125,8 @@ namespace ClassLibrary
                 mOrderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineID"]);
                 mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
                 mToolID = Convert.ToInt32(DB.DataTable.Rows[0]["ToolID"]);
-                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["Quantity"]);
-                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mDescription = Convert.ToString(DB.DataTable.Rows[0]["Description"]);
+                mOrderLineDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderLineDate"]); 
                 mOrderLineConfirmed = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderLineConfirmed"]);
 
                 //return that everything worked OK 
@@ -140,5 +140,52 @@ namespace ClassLibrary
             }
         }
 
+        public string Valid(string description, string orderLineDate)
+        {
+            //create a string variable to store the error
+            String Error = "";
+
+            //create a temporary varianle to store date values
+            DateTime DateTemp;
+
+            //if the ShippingAddress is blank
+            if (description.Length == 0)
+            {
+                // record the error
+                Error = Error + "The description may not be blank : ";
+            }
+            //if the shippingAddress is greater than 50
+            if (description.Length > 50)
+            {
+                // record the error
+                Error = Error + "The description must be less than 50 characters : ";
+            }
+
+            try
+            {
+
+                //copy the orderDate value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(orderLineDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The order line date cannot be in the past :";
+                }
+                //check to see if the date is greater than todays date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record error
+                    Error = Error + "The order line date cannot be in the future :";
+                }
+            }
+            catch
+            {
+                //record the error
+                Error = Error + "The order line date was not a valid date : ";
+            }
+            //return any error messages
+            return Error;
+        }
     }
-}
+    }
+

@@ -118,7 +118,7 @@ namespace ClassLibrary
 
         public void Update()
         {
-            //update an existi9ng record based on the values of thisOrder
+            //update an existing record based on the values of thisOrder
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
