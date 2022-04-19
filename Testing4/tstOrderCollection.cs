@@ -60,7 +60,7 @@ namespace Testing4
             //set the properties of the test object
             
             TestOrder.OrderId = 1;
-           TestOrder.CustomerId = 232335;
+           TestOrder.CustomerId = 137;
             TestOrder.ShippingAddress = "Madeira";
            TestOrder.OrderDate = DateTime.Now.Date;
             TestOrder.OrderEmail = "andreiamartins@gmail.com"; 
@@ -84,7 +84,7 @@ namespace Testing4
             //set the properties of the test object
          
           TestItem.OrderId = 1;
-            TestItem.CustomerId = 232335;
+            TestItem.CustomerId = 137;
             TestItem.ShippingAddress = "Madeira";
            TestItem.OrderEmail = "andreiamartins@gmail.com";
             TestItem.OrderDate = DateTime.Now.Date;  
@@ -110,7 +110,7 @@ namespace Testing4
             //set its properties
             TestItem.OrderCompleted = true;
             TestItem.OrderId = 8;
-            TestItem.CustomerId = 232445;
+            TestItem.CustomerId = 146;
             TestItem.ShippingAddress = "Poland";
             TestItem.OrderDate = DateTime.Now.Date;
             TestItem.OrderEmail = "joaoroberto@gmail.com";
@@ -138,9 +138,10 @@ namespace Testing4
             Int32 PrimaryKey = 0;
             //set its properties
             TestItem.OrderCompleted = true;
-            TestItem.CustomerId = 1;
-            TestItem.ShippingAddress = "Poland";
-            TestItem.OrderEmail = "joaoroberto@gmail.com";
+            TestItem.CustomerId = 137;
+            TestItem.OrderId = 1;
+            TestItem.ShippingAddress = "Madeira";
+            TestItem.OrderEmail = "andreiamartins@gmail.com";
             TestItem.OrderDate = DateTime.Now.Date;
 
             //set ThisOrder to the test data
@@ -177,9 +178,9 @@ namespace Testing4
             //set its properties
             TestItem.OrderCompleted = true;
             TestItem.OrderId = 1;
-            TestItem.CustomerId = 1;
-            TestItem.ShippingAddress = "Poland";
-            TestItem.OrderEmail = "joaoroberto@gmail.com";
+            TestItem.CustomerId = 137;
+            TestItem.ShippingAddress = "Madeira";
+            TestItem.OrderEmail = "andreiamartins@gmail.com";
             TestItem.OrderDate = DateTime.Now.Date;
 
             //set ThisOrder to the test data

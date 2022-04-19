@@ -60,7 +60,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Error = "";
       
         //validate the data
-        Error = AnOrder.Valid(CustomerId, ShippingAddress, OrderDate, OrderEmail);
+        Error = AnOrder.Valid(ShippingAddress, OrderDate, OrderEmail);
         if (Error == "")
         {
 
@@ -123,7 +123,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             //display the values of the properties in the form
     
-         txtCustomerId.Text = AnOrder.CustomerId.ToString();
+        // txtCustomerId.Text = AnOrder.CustomerId.ToString();
          txtShippingAddress.Text  = AnOrder.ShippingAddress;
          txtOrderDate.Text  = AnOrder.OrderDate.ToString();
          txtOrderEmail.Text = AnOrder.OrderEmail;

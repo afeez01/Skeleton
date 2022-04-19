@@ -91,7 +91,7 @@ namespace ClassLibrary
             {
               //this line of code allows data into the property 
                 mOrderEmail = value;
-                ;
+                
             }
         }
         //OrderCompleted private member variable
@@ -140,7 +140,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string customerId, string shippingAddress, string orderDate, string orderEmail)
+        public string Valid( string shippingAddress, string orderDate, string orderEmail)
         {
             //create a string variable to store the error
             String Error = "";
@@ -196,20 +196,6 @@ namespace ClassLibrary
                 Error = Error + "The order email must be less than 50 characters : ";
             }
            
-            try
-            {
-                int result = Int32.Parse(customerId);
-                if (result < 0)
-                {
-                    // record the error
-                    Error = Error + "The customerID cannot be less than zero : ";
-                }
-            }
-            catch (FormatException)
-            {
-                // record the error 
-                Error = Error + "The customerID has invalid format! : ";
-            }
 
             //return any error messages
             return Error;

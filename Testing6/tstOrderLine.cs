@@ -10,10 +10,10 @@ namespace Testing6
         //good test data
         //create some test data to pass to the method
 
-        string OrderID = "3234322";
-        string ToolID = "7655654";
-        string Quantity = "3";
-        string Price = "3.0000";
+       // string OrderID = "1";
+        //string ToolID = "53";
+        string Description = "Drill";
+        string OrderLineDate = DateTime.Now.Date.ToString();
 
         [TestMethod]
         public void InstanceOK()
@@ -65,7 +65,7 @@ namespace Testing6
             clsOrderLine AnOrderLine = new clsOrderLine();
 
             //creat some test data to assign to the property
-            Int32 TestData = 2;
+            Int32 TestData = 53;
 
             //assign the data to the property   
             AnOrderLine.ToolID = TestData;
@@ -76,36 +76,36 @@ namespace Testing6
 
         }
         [TestMethod]
-        public void QuantityPropertyOK()
+        public void DescriptionPropertyOK()
         {
             //create a new instance of the class we want to create
             clsOrderLine AnOrderLine = new clsOrderLine();
 
             //create some test data to assign to the property
-            Int32 TestData = 3;
+            string TestData = "hammer";
 
             //assign the data to the property
-            AnOrderLine.Quantity = TestData;
+            AnOrderLine.Description = TestData;
 
             //test to see the two values are the same
-            Assert.AreEqual(AnOrderLine.Quantity, TestData);
+            Assert.AreEqual(AnOrderLine.Description, TestData);
 
 
         }
         [TestMethod]
-        public void PricePropertyOK()
+        public void OrderLineDatePropertyOK()
         {
             //create an instance of the class we want to create
             clsOrderLine AnOrderLine = new clsOrderLine();
 
             //create some test data to assign to the property
-            decimal TestData = 2.000m;
+            DateTime TestData = DateTime.Now.Date;
 
             //assign the data to the property
-            AnOrderLine.Price = TestData;
+            AnOrderLine.OrderLineDate = TestData;
 
             //test to see the two values are the same
-            Assert.AreEqual(AnOrderLine.Price, TestData);
+            Assert.AreEqual(AnOrderLine.OrderLineDate, TestData);
 
         }
         [TestMethod]
@@ -191,7 +191,7 @@ namespace Testing6
         Found = AnOrderLine.Find(OrderLineID);
 
         //check the property
-        if (AnOrderLine.OrderID != 3234322)
+        if (AnOrderLine.OrderID != 1)
         {
             OK = false;
         }
@@ -220,7 +220,7 @@ namespace Testing6
         Found = AnOrderLine.Find(OrderLineID);
 
         //check the property
-        if (AnOrderLine.ToolID != 7655654)
+        if (AnOrderLine.ToolID != 53)
         {
             OK = false;
         }
@@ -230,7 +230,7 @@ namespace Testing6
 
     }
     [TestMethod]
-    public void TestQuantityFound()
+    public void TestDescriptionFound()
     {
 
         //create an instance of the class we want to create
@@ -249,7 +249,7 @@ namespace Testing6
         Found = AnOrderLine.Find(OrderLineID);
 
         //check the property
-        if (AnOrderLine.Quantity != 3)
+        if (AnOrderLine.Description != "Drill")
         {
             OK = false;
         }
@@ -260,7 +260,7 @@ namespace Testing6
     }
 
     [TestMethod]
-    public void TestPriceFound()
+    public void TestOrderLineDateFound()
     {
 
         //create an instance of the class we want to create
@@ -279,7 +279,7 @@ namespace Testing6
         Found = AnOrderLine.Find(OrderLineID);
 
         //check the property
-        if (AnOrderLine.Price != 3.0000m)
+        if (AnOrderLine.OrderLineDate != Convert.ToDateTime("2022-06-23")) 
         {
             OK = false;
         }
@@ -316,7 +316,329 @@ namespace Testing6
         Assert.IsTrue(OK);
 
     }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
 
-}
+            //string variable to store any error message
+            String Error = "";
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+            
+          //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        //        ************************************** Description **************************************
+        [TestMethod]
+        public void DescriptionMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            String Description = "";//this should fail
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMin()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "a";//this should pass
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+
+
+        }
+        [TestMethod]
+        public void DescriptionMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "aa";//this should pass
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "";
+            Description = Description.PadLeft(49, 'a'); //this should pass
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMax()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "";
+            Description = Description.PadRight(50, 'a'); //this should pass
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMid()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "";
+            Description = Description.PadRight(25, 'a');//this should pass
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DescriptionMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            //string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass to the method
+            string Description = "";
+            Description = Description.PadRight(51, 'a');//this should fail
+
+            //invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
+        }
+        [TestMethod]
+        public void DescriptionExtremeMax()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            String Description = "";
+            Description = Description.PadRight(1000, 'a');//this should fail
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        //******************************** OrderLineDate ************************************
+
+        [TestMethod]
+        public void OrderLineDateExtremeMin()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+
+            //convert the date variable to a string variable
+            string OrderLineDate = TestDate.ToString();
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineDateMinLessOne()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddDays(-1);
+
+            //convert the date variable to a string variable
+            string OrderLineDate = TestDate.ToString();
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineDateMin()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //convert the date variable to a string variable
+            string OrderLineDate = TestDate.ToString();
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineDateMinPlusOne()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddDays(1);
+
+            //convert the date variable to a string variable
+            string OrderLineDate = TestDate.ToString();
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineDateExtremeMax()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //create some test data to pass the method
+            DateTime TestDate;
+
+            //set the date to todays date
+            TestDate = DateTime.Now.Date;
+
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(100);
+
+            //convert the date variable to a string variable
+            string OrderLineDate = TestDate.ToString();
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderLineDateInvalidData()
+        {
+            // create an instance of the class we want to create
+            clsOrderLine AnOrderLine = new clsOrderLine();
+
+            // string variable to store any error message
+            String Error = "";
+
+            //convert the date variable to a string variable
+            string OrderLineDate = "this is not a order line date";
+
+            // invoke the method
+            Error = AnOrderLine.Valid(Description, OrderLineDate);
+
+            // test to see that the result is correcto
+            Assert.AreNotEqual(Error, "");
+        }
+     
+
+    }
 }
 
