@@ -187,7 +187,7 @@ namespace Testing3
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.ToolName != "Bosch HSS-R Drill Bit")
+            if (AnStock.ToolName != "This record used by the filter function")
             {
                 OK = false;
             }
@@ -243,7 +243,7 @@ namespace Testing3
             // invoke the method
             Found = AnStock.Find(ToolID);
             // check the tool name
-            if (AnStock.DateAdded!= Convert.ToDateTime("07/02/2022"))
+            if (AnStock.DateAdded!= Convert.ToDateTime("19/04/2022"))
             {
                 OK = false;
             }

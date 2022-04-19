@@ -299,7 +299,7 @@ namespace Testing3
             Boolean OK = true;
 
             // apply a tool name from the database  which has more than one occurrence
-            FilteredStock.ReportByToolName("Bosch HSS-R Drill Bit");
+            FilteredStock.ReportByToolName("This record used by the filter function");
             // check that the correct number of records are found
             if(FilteredStock.Count == 2)
             {
@@ -309,7 +309,7 @@ namespace Testing3
                     OK = false;
                 }
 
-                // check that the first record is ID 53
+                // check that the second record is ID 53
                 if (FilteredStock.StockList[1].ToolID != 53)
                 {
                     OK = false;
