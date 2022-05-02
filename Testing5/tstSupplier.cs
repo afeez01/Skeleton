@@ -319,7 +319,7 @@ namespace Testing5
             string Error = "";
 
             //invoke method
-            Error = ASupplier.Valid(Name, Address, DateAdded, Feedback);
+            Error = ASupplier.Valid(DateAdded,  Name,  Feedback, Address);
 
             //test to see that the result is correct
             Assert.AreEqual(Error, "");

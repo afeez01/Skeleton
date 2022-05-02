@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
     public class clsSupplier
     {
+
         //private data members
         private Int32 mSupplierId;
         private DateTime mDateAdded;
@@ -77,20 +79,20 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int SupplierId)
+        public bool Find(int SupplierID)
         {
             //create an isntance of the data collection
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@SupplierId", SupplierId);
+            DB.AddParameter("@SupplierID", SupplierID);
             DB.Execute("sproc_tblSupplier_FilterBySupplierId");
             if (DB.Count == 1)
             {
-                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0][" SupplierId"]);
+                mSupplierId = Convert.ToInt32(DB.DataTable.Rows[0]["SupplierID"]);
                 mDateAdded = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAdded"]);
                 mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
                 mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
-                mGlobalSupplier = Convert.ToBoolean(DB.DataTable.Rows[0]["GlobalSupplier "]);
-                mFeedback = Convert.ToDecimal(DB.DataTable.Rows[0]["Feedback "]);
+                mGlobalSupplier = Convert.ToBoolean(DB.DataTable.Rows[0]["GlobalSupplier"]);
+                mFeedback = Convert.ToDecimal(DB.DataTable.Rows[0]["Feedback"]);
                 return true;
             }
             else
