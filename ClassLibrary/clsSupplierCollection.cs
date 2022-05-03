@@ -36,7 +36,7 @@ namespace ClassLibrary
                 clsSupplier ASupplier = new clsSupplier();
 
                 // read in the fields from record
-                ASupplier.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index][" SupplierID"]);
+                ASupplier.SupplierId = Convert.ToInt32(DB.DataTable.Rows[Index]["SupplierID"]);
                 ASupplier.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
                 ASupplier.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
                 ASupplier.DateAdded = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAdded"]);
@@ -125,7 +125,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
 
             // set the parameters for the stored procedure
-            DB.AddParameter("@ToolID", mThisSupplier.SupplierId);
+            DB.AddParameter("@SupplierId", mThisSupplier.SupplierId);
 
             // execute the query returning the primary key value
             DB.Execute("sproc_tblSupplier_Delete");
