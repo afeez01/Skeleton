@@ -79,7 +79,7 @@ public partial class _1_List : System.Web.UI.Page
     }
     protected void btnApply_Click(object sender, EventArgs e)
     {
-        //create an instance of the order collction
+        //create an instance of the  collction
         clsSupplierCollection AllSuppliers = new clsSupplierCollection();
         AllSuppliers.ReportByName(txtFilter.Text);
         lstSupplierList.DataSource = AllSuppliers.SupplierList;
@@ -93,8 +93,8 @@ public partial class _1_List : System.Web.UI.Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
-        //create an instance of the order collection
-        clsSupplierCollection AllSuppliers = new clsSupplierCollection();
+        //create an instance of the collection
+        clsSupplier AllSuppliers = new clsSupplierCollection();
         AllSuppliers.ReportByName("");
         //clear any existing filter to tidy up the interface
         txtFilter.Text = "";

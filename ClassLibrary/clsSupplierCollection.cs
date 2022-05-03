@@ -4,13 +4,13 @@ using System;
 
 namespace ClassLibrary
 {
-    public class clsSupplierCollectionOGGG
+    public class clsSupplierCollection
     {
          List<clsSupplier> mSupplierList = new List<clsSupplier>();
         // private data member thisStock
         clsSupplier mThisSupplier = new clsSupplier(); 
 
-        public clsSupplierCollectionOGGG()
+        public clsSupplierCollection()
         { 
         //data connection to object
         clsDataConnection DB = new clsDataConnection();
