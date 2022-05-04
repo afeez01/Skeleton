@@ -37,7 +37,7 @@
         <asp:TextBox ID="txtFeedback" runat="server"></asp:TextBox>
         <br />
         <br />
-&nbsp;<asp:CheckBox ID="cbGlobal" runat="server" OnCheckedChanged="cbGlobal_CheckedChanged" Text="Global Supplier?" />
+&nbsp;<asp:CheckBox ID="cbGlobal" runat="server" Text="Global Supplier?" />
         <br />
         <br />
         <asp:Button ID="btnRegister" runat="server" OnClick="btnOk_Click" Text="Ok" />
