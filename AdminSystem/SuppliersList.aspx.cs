@@ -94,7 +94,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClear_Click(object sender, EventArgs e)
     {
         //create an instance of the collection
-        clsSupplier AllSuppliers = new clsSupplierCollection();
+        clsSupplierCollection AllSuppliers = new clsSupplierCollection();
         AllSuppliers.ReportByName("");
         //clear any existing filter to tidy up the interface
         txtFilter.Text = "";
