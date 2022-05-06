@@ -10,7 +10,7 @@ namespace ClassLibrary
 
             //private data member for the list
             List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
-            //private data member thisOrder
+            //private data member thisOrderLine
             clsOrderLine mThisOrderLine = new clsOrderLine();
             public clsOrderLineCollection()
             {
@@ -84,7 +84,7 @@ namespace ClassLibrary
 
             }
         }
-        //public property for ThisOrder
+        //public property for ThisOrderLine
         public clsOrderLine ThisOrderLine
         {
             get
@@ -101,7 +101,7 @@ namespace ClassLibrary
 
         public int Add()
         {
-            //adds a new record to the database on the values of mThisOrder
+            //adds a new record to the database on the values of mThisOrderLine
             //set the primary key value of the new record
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
@@ -117,7 +117,7 @@ namespace ClassLibrary
 
         public void Update()
         {
-            //update an existi9ng record based on the values of thisOrder
+            //update an existi9ng record based on the values of thisOrderLine
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
@@ -135,7 +135,7 @@ namespace ClassLibrary
 
         public void Delete()
         {
-            //deletes the record pointed to by thisOrder
+            //deletes the record pointed to by thisOrderLine
             //connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
@@ -147,7 +147,7 @@ namespace ClassLibrary
 
         public void ReportByDescription(string Description)
         {
-            //filters the records based on a full or partial shipping address
+            //filters the records based on a full or partial description
             //conncect to the database
             clsDataConnection DB = new clsDataConnection();
             //send the PostCode parameter to the database
