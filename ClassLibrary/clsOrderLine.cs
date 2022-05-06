@@ -4,10 +4,10 @@ namespace ClassLibrary
 {
     public class clsOrderLine
     {
-        //OrderId private member variable
+        //OrderLineID private member variable
         private Int32 mOrderLineID;
 
-        //OrderId public property
+        //OrderLineID public property
         public Int32 OrderLineID
         {
             get
@@ -23,7 +23,7 @@ namespace ClassLibrary
 
             }
         }
-        //CustomerId private member variable
+        //OrderID private member variable
         private Int32 mOrderID;
 
         //CustomerId public property
@@ -43,7 +43,7 @@ namespace ClassLibrary
         }
 
 
-        //ShippingAddress private member variable
+        //ToolID private member variable
         private Int32 mToolID;
         //ShippingAddress public property
         public Int32 ToolID
@@ -59,7 +59,7 @@ namespace ClassLibrary
                 mToolID = value;
             }
         }
-        //OrderDate private member variable
+        //Description private member variable
         private string mDescription;
         //OrderDate public property
         public string Description
@@ -76,7 +76,7 @@ namespace ClassLibrary
             }
         }
 
-        //OrderEmail private member variable
+        //OrderLineDate private member variable
         private DateTime mOrderLineDate;
         //OrderEmail public property
         public DateTime OrderLineDate
@@ -94,9 +94,9 @@ namespace ClassLibrary
                 
             }
         }
-        //OrderCompleted private member variable
+        //OrderLineConfirmed private member variable
         private bool mOrderLineConfirmed;
-        //OrderCompleted public property
+        //OrderLineConfirmed public property
         public bool OrderLineConfirmed
         {
             get
@@ -148,13 +148,13 @@ namespace ClassLibrary
             //create a temporary varianle to store date values
             DateTime DateTemp;
 
-            //if the ShippingAddress is blank
+            //if the escription is blank
             if (description.Length == 0)
             {
                 // record the error
                 Error = Error + "The description may not be blank : ";
             }
-            //if the shippingAddress is greater than 50
+            //if the escription is greater than 50
             if (description.Length > 50)
             {
                 // record the error
@@ -164,7 +164,7 @@ namespace ClassLibrary
             try
             {
 
-                //copy the orderDate value to the DateTemp variable
+                //copy the orderLineDate value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(orderLineDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
