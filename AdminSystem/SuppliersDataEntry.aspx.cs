@@ -55,6 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //capture the values
             ASupplier.SupplierId = SupplierID;
             ASupplier.Address = Address;
+            ASupplier.Name = Name;
             ASupplier.DateAdded =Convert.ToDateTime( DateAdded);
             ASupplier.GlobalSupplier = GlobalSupplier;
             ASupplier.Feedback = Convert.ToDecimal(Feedback);

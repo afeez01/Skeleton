@@ -588,7 +588,7 @@ namespace Testing5
             //Invoke the method
             Error = ASupplier.Valid(DateAdded, Name, Feedback, Address);
             //Test to see if the results are the expected
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DateAddedTODAY()
@@ -642,7 +642,7 @@ namespace Testing5
             //Invoke the method
             Error = ASupplier.Valid(DateAdded, Name, Feedback, Address);
             //Test to see if the results are the expected
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void DateAddedInvalid()

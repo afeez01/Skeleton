@@ -77,7 +77,9 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
-    protected void btnApply_Click(object sender, EventArgs e)
+
+
+    protected void btnApply_Click1(object sender, EventArgs e)
     {
         //create an instance of the  collction
         clsSupplierCollection AllSuppliers = new clsSupplierCollection();
@@ -91,9 +93,9 @@ public partial class _1_List : System.Web.UI.Page
         lstSupplierList.DataBind();
     }
 
-    protected void btnClear_Click(object sender, EventArgs e)
+    protected void btnClear_Click1(object sender, EventArgs e)
     {
-        //create an instance of the collection
+ //create an instance of the collection
         clsSupplierCollection AllSuppliers = new clsSupplierCollection();
         AllSuppliers.ReportByName("");
         //clear any existing filter to tidy up the interface

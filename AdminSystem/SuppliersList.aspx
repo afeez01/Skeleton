@@ -20,9 +20,9 @@
 &nbsp;
         <asp:TextBox ID="txtFilter" runat="server"></asp:TextBox>
         <br />
-        <asp:Button ID="btnApply" runat="server" Text="Apply" />
+        <asp:Button ID="btnApply" runat="server" Text="Apply" OnClick="btnApply_Click1" />
 &nbsp;
-        <asp:Button ID="btnClear" runat="server" Text="Clear" />
+        <asp:Button ID="btnClear" runat="server" Text="Clear" OnClick="btnClear_Click1" />
         <br />
         <p>
             <asp:Label ID="lblError" runat="server"></asp:Label>

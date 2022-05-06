@@ -123,9 +123,9 @@ namespace ClassLibrary
             {
                 DateTemp = Convert.ToDateTime(DateAdded);
 
-                if (DateTemp != DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date.AddYears(-10))
                 {
-                    Error = Error + "The date must be today, ";
+                    Error = Error + "The date must be whithin the last decade, ";
                 }
             }
             //DateAdded needs to be in valid format

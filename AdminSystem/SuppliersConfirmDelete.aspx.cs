@@ -17,9 +17,10 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         SupplierId = Convert.ToInt32(Session["SupplierId"]);
     }
 
-    protected void btnYes_Click(object sender, EventArgs e)
+
+    protected void btnYes_Click1(object sender, EventArgs e)
     {
-        //create a new instance of the collection class
+ //create a new instance of the collection class
         clsSupplierCollection AllSuppliers = new clsSupplierCollection();
 
         //find the record to delete
@@ -29,7 +30,6 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         AllSuppliers.Delete();
 
         //redirect back to the main page
-        Response.Redirect("SuppliersList.aspx");
-
+        Response.Redirect("SuppliersList.aspx"); 
     }
 }
